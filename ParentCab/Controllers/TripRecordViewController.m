@@ -60,7 +60,7 @@
     NSData *mapData = [GoogleMapsImage getRouteMapForJourney:self.journey];
 	UIImage *myImage = [UIImage imageWithData:mapData];
 	
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[textToShare, myImage, self.journey]
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:@[textToShare, myImage]
 																			 applicationActivities:nil];
 
 	activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact]; 
