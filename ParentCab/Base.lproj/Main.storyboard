@@ -494,13 +494,89 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="dNj-Qr-xd2">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="JourneyCell" rowHeight="84" id="Hqd-vd-WQH" customClass="JourneyListCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dNj-Qr-xd2" id="PSb-ej-Uwr">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Hqd-vd-WQH" id="VHB-fl-8zg">
+                                    <rect key="frame" x="0.0" y="0.0" width="253" height="83"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" ambiguous="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dvc-o7-XCl">
+                                            <rect key="frame" x="0.0" y="0.0" width="72" height="83"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="72" id="bAf-0s-7ZQ"/>
+                                                <constraint firstAttribute="width" constant="72" id="sB4-RV-36o"/>
+                                            </constraints>
+                                        </mapView>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="£ Fare" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DG1-kd-apa">
+                                            <rect key="frame" x="80" y="0.0" width="211" height="31"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="31" id="5DF-Rx-KS4"/>
+                                                <constraint firstAttribute="width" constant="211" id="U0c-rJ-ZwG"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="Start" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4e4-kE-dAi">
+                                            <rect key="frame" x="80" y="39" width="100" height="16"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="WID-Lt-gXW"/>
+                                                <constraint firstAttribute="height" constant="16" id="w3e-IF-FuF"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" text="Start Postcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cCg-Bn-iMX">
+                                            <rect key="frame" x="80" y="55" width="115" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="115" id="VZd-Pt-caD"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="End Postcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1X9-mR-1oQ" userLabel="End Postcode">
+                                            <rect key="frame" x="212" y="55" width="109" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" ambiguous="YES" misplaced="YES" text="End" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qe9-I5-jy6" userLabel="End">
+                                            <rect key="frame" x="212" y="36" width="100" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="21" id="fKt-wJ-gX9"/>
+                                                <constraint firstAttribute="width" constant="100" id="wZP-AT-76i"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="1X9-mR-1oQ" firstAttribute="leading" secondItem="qe9-I5-jy6" secondAttribute="leading" id="4Og-vS-ahz"/>
+                                        <constraint firstItem="4e4-kE-dAi" firstAttribute="leading" secondItem="DG1-kd-apa" secondAttribute="leading" id="6rU-TA-v0v"/>
+                                        <constraint firstItem="cCg-Bn-iMX" firstAttribute="top" secondItem="4e4-kE-dAi" secondAttribute="bottom" id="9DQ-Iv-tvA"/>
+                                        <constraint firstItem="qe9-I5-jy6" firstAttribute="top" secondItem="4e4-kE-dAi" secondAttribute="top" constant="-3" id="E2M-XW-X7L"/>
+                                        <constraint firstItem="1X9-mR-1oQ" firstAttribute="top" secondItem="qe9-I5-jy6" secondAttribute="bottom" constant="-2" id="E67-uj-5bC"/>
+                                        <constraint firstItem="4e4-kE-dAi" firstAttribute="leading" secondItem="cCg-Bn-iMX" secondAttribute="leading" id="Ndd-yV-QFR"/>
+                                        <constraint firstAttribute="bottom" secondItem="Dvc-o7-XCl" secondAttribute="bottom" id="RX6-6y-gP7"/>
+                                        <constraint firstItem="DG1-kd-apa" firstAttribute="top" secondItem="VHB-fl-8zg" secondAttribute="top" id="WSW-Ro-smU"/>
+                                        <constraint firstItem="Dvc-o7-XCl" firstAttribute="top" secondItem="VHB-fl-8zg" secondAttribute="top" id="nvP-sC-1kN"/>
+                                        <constraint firstItem="4e4-kE-dAi" firstAttribute="top" secondItem="DG1-kd-apa" secondAttribute="bottom" constant="8" id="rCq-k2-cEU"/>
+                                        <constraint firstItem="DG1-kd-apa" firstAttribute="leading" secondItem="Dvc-o7-XCl" secondAttribute="trailing" constant="8" id="xSC-6h-Bpw"/>
+                                        <constraint firstItem="qe9-I5-jy6" firstAttribute="leading" secondItem="4e4-kE-dAi" secondAttribute="trailing" constant="32" id="ywm-d5-qMI"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="7sF-tP-UPd" kind="showDetail" id="hew-Js-Bns"/>
+                                    <outlet property="endPostCode" destination="1X9-mR-1oQ" id="z4e-zi-THM"/>
+                                    <outlet property="endStreet" destination="qe9-I5-jy6" id="wdI-aR-qdC"/>
+                                    <outlet property="fare" destination="DG1-kd-apa" id="Wm3-bq-rdR"/>
+                                    <outlet property="mapView" destination="Dvc-o7-XCl" id="zcn-bl-elk"/>
+                                    <outlet property="startPostCode" destination="cCg-Bn-iMX" id="FcX-e4-TUs"/>
+                                    <outlet property="startStreet" destination="4e4-kE-dAi" id="Tvj-xd-4F2"/>
+                                    <segue destination="7sF-tP-UPd" kind="show" identifier="ShowJourney" id="job-Rp-647"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -516,6 +592,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="vmG-tZ-YXb"/>
+        <segue reference="job-Rp-647"/>
     </inferredMetricsTieBreakers>
 </document>

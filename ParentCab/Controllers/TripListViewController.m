@@ -2,59 +2,76 @@
 #import "TripRecordViewController.h"
 #import "JourneyListCell.h"
 #import "Model.h"
-#import "JourneyRepository.h"
+#import "AppDelegate.h"
+#import "PCabCoreDataHelper.h"
 
-@implementation TripListViewController {
-	JourneyRepository *journeyRepository;
-}
+@implementation TripListViewController
+#define debug 1
 
-
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	journeyRepository = [JourneyRepository sharedRepository];
-}
-
-
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
-}
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return [journeyRepository.journeys count];
-}
-
-
-#pragma mark - Table View Delegate
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *CellIdentifier = @"Cell";
-    JourneyListCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-    [self configureCell:cell atIndexPath:indexPath];
-    return cell;
-}
-
-- (void)configureCell:(JourneyListCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-	Journey *journey = journeyRepository.journeys[indexPath.row];
-	[cell setJourney:journey];
-    return;
-}
-
-- (void)tableView:(UITableView *)tableView
-commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-forRowAtIndexPath:(NSIndexPath *)indexPath {
+#pragma mark - Data
+- (void)configureFetch {
 	
-	Journey *journey = journeyRepository.journeys[indexPath.row];
-	
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		[journeyRepository deleteJourney:journey];
-		[self.tableView reloadData];
+	if (debug == 1) {
+		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
 	}
+	
+	PCabCoreDataHelper *cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
+	
+	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Journey"];
+	
+	request.sortDescriptors = [NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"startTime" ascending:NO]];
+	[request setFetchBatchSize:50];
+
+	
+	self.frc = [[NSFetchedResultsController alloc] initWithFetchRequest:request
+												   managedObjectContext:cdh.context
+													 sectionNameKeyPath:nil
+															  cacheName:nil];
+	self.frc .delegate = self;
+	
+
 }
+
+
+#pragma mark - View
+- (void)viewDidLoad {
+	
+	if (debug == 1) {
+		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+	}
+	
+	[super viewDidLoad];
+	[self configureFetch];
+	[self performFetch];
+	
+	self.clearConfirmActionSheet.delegate = self;
+	
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(performFetch)
+												 name:@"SomethingChanged"
+											   object:nil];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+	
+	if (debug == 1) {
+		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+	}
+	
+	static NSString *cellIdentifier = @"JourneyCell";
+	JourneyListCell *cell = (JourneyListCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
+
+	cell.journey = [self.frc objectAtIndexPath:indexPath];
+
+	return cell;
+}
+
+
 
 
 #pragma mark - Seque stuff
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"VIEWJOURNEY"])
+    if ([[segue identifier] isEqualToString:@"ShowJourney"])
     {
 		JourneyListCell *cell = (JourneyListCell *)sender;
         TripRecordViewController *upcomingViewController = [segue destinationViewController];

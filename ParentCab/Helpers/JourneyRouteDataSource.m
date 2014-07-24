@@ -38,8 +38,6 @@
 	location.latitude = step.location.latitude;
 	location.longitude = step.location.longitude;
 	
-	NSLog(@"locationForRouteOverlay %@", [step toString]);
-	
 	return location;
 }
 

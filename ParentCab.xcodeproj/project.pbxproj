@@ -31,8 +31,10 @@
 		787FA223197AAC73004B084E /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA221197AAC73004B084E /* Step.m */; };
 		787FA226197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
 		787FA227197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
-		787FA22B197AACB9004B084E /* JourneyRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA22A197AACB9004B084E /* JourneyRepository.m */; };
-		787FA22C197AACB9004B084E /* JourneyRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA22A197AACB9004B084E /* JourneyRepository.m */; };
+		78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
+		78B178B01981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
+		78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
+		78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
 		78D51B6E197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
 /* End PBXBuildFile section */
@@ -87,8 +89,10 @@
 		787FA224197AAC73004B084E /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		787FA225197AAC73004B084E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		787FA228197AAC84004B084E /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
-		787FA229197AACB9004B084E /* JourneyRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyRepository.h; sourceTree = "<group>"; };
-		787FA22A197AACB9004B084E /* JourneyRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyRepository.m; sourceTree = "<group>"; };
+		78B178AD1981145600380B71 /* CoreDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTVC.h; sourceTree = "<group>"; };
+		78B178AE1981145600380B71 /* CoreDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTVC.m; sourceTree = "<group>"; };
+		78B178B119812F6500380B71 /* PCabCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCabCoreDataHelper.h; sourceTree = "<group>"; };
+		78B178B219812F6500380B71 /* PCabCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCabCoreDataHelper.m; sourceTree = "<group>"; };
 		78D51B6B197D443600710E1C /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		78D51B6C197D443600710E1C /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -200,10 +204,12 @@
 				787FA21C197AAC72004B084E /* Journey.h */,
 				787FA21D197AAC72004B084E /* Journey.m */,
 				787FA228197AAC84004B084E /* model.h */,
-				787FA229197AACB9004B084E /* JourneyRepository.h */,
-				787FA22A197AACB9004B084E /* JourneyRepository.m */,
+				78B178AD1981145600380B71 /* CoreDataTVC.h */,
+				78B178AE1981145600380B71 /* CoreDataTVC.m */,
 				78D51B6B197D443600710E1C /* CoreDataHelper.h */,
 				78D51B6C197D443600710E1C /* CoreDataHelper.m */,
+				78B178B119812F6500380B71 /* PCabCoreDataHelper.h */,
+				78B178B219812F6500380B71 /* PCabCoreDataHelper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -356,17 +362,18 @@
 				787FA201197AAAB5004B084E /* TripViewController.m in Sources */,
 				787FA1D2197AAA24004B084E /* main.m in Sources */,
 				787FA21E197AAC72004B084E /* Journey.m in Sources */,
-				787FA22B197AACB9004B084E /* JourneyRepository.m in Sources */,
 				787FA218197AAB4E004B084E /* JourneyListCell.m in Sources */,
 				787FA20D197AAADE004B084E /* RouteOverlay.m in Sources */,
 				787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */,
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,
+				78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */,
 				787FA222197AAC73004B084E /* Step.m in Sources */,
 				78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */,
 				787FA204197AAAC1004B084E /* TripListViewController.m in Sources */,
 				787FA200197AAAB5004B084E /* TripRecordViewController.m in Sources */,
 				787FA1FB197AAA9B004B084E /* GoogleMapsImage.m in Sources */,
 				787FA226197AAC73004B084E /* Location.m in Sources */,
+				78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				787FA21B197AAB68004B084E /* EDSunriseSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,12 +382,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				78D51B6E197D443600710E1C /* CoreDataHelper.m in Sources */,
-				787FA22C197AACB9004B084E /* JourneyRepository.m in Sources */,
 				787FA21F197AAC72004B084E /* Journey.m in Sources */,
 				787FA223197AAC73004B084E /* Step.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,
 				787FA1EC197AAA24004B084E /* ParentCabTests.m in Sources */,
+				78B178B01981145600380B71 /* CoreDataTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

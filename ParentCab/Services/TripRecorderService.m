@@ -8,13 +8,14 @@
 #import <UIKit/UIKit.h>
 #import "TripRecorderService.h"
 #import "Model.h"
-#import "JourneyRepository.h"
+#import "PCabCoreDataHelper.h"
+#import "AppDelegate.h"
 
 @interface TripRecorderService ()
 {
 	CLLocation *previousLocation;
     Boolean recording;
-	JourneyRepository *journeyRepository;
+	PCabCoreDataHelper *cdh;
 }
 @end
 
@@ -42,7 +43,7 @@
 		
 		_geocoder = [[CLGeocoder alloc] init];
 	
-		journeyRepository = [JourneyRepository sharedRepository];
+		cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
 	}
 
 	return self;
@@ -71,7 +72,7 @@
 		
 
 		
-		Location *startLocation = [journeyRepository getNewLocation];
+		Location *startLocation = [cdh getNewLocation];
 		startLocation.latitude = newLocation.coordinate.latitude;
 		startLocation.longitude = newLocation.coordinate.longitude;
 	
@@ -91,8 +92,8 @@
 	
 	}
 
-	Step *newStep = [journeyRepository getNewStep];
-	Location *stepLocation = [journeyRepository getNewLocation];
+	Step *newStep = [cdh getNewStep];
+	Location *stepLocation = [cdh getNewLocation];
 	newStep.location = stepLocation;
 	newStep.location.latitude = newLocation.coordinate.latitude;
 	newStep.location.longitude = newLocation.coordinate.longitude;
@@ -122,7 +123,7 @@
 - (void)startRecording {
 	if (recording == NO) {
 		[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-		self.currentJourney = [journeyRepository getNewJourney];
+		self.currentJourney = [cdh getNewJourney];
 		self.currentJourney.startTime = [[NSDate date] timeIntervalSince1970];
 		recording = YES;
 		[self.locationManager startUpdatingLocation];
@@ -137,7 +138,7 @@
 	}
 	
 	if (self.currentJourney) {
-		Location *endLocation = [journeyRepository getNewLocation];
+		Location *endLocation = [cdh getNewLocation];
 		endLocation.latitude = previousLocation.coordinate.latitude;
 		endLocation.longitude = previousLocation.coordinate.longitude;
 		
@@ -229,7 +230,6 @@
 	double pricePerMeter = .000625; // put this in the model soon.
 	return distance * pricePerMeter;
 }
-
 
 
 @end

@@ -7,12 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "CoreDataHelper.h"
+#import "PCabCoreDataHelper.h"
 #import <CoreLocation/CoreLocation.h>
 
 
 @interface AppDelegate ()
-
+@property (nonatomic, strong, readonly) PCabCoreDataHelper *coreDataHelper;
 @end
 
 @implementation AppDelegate
@@ -24,7 +24,8 @@
 		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
 	}
 	// Override point for customization after application launch.
-	_coreDataHelper = [CoreDataHelper new];
+	_coreDataHelper = [PCabCoreDataHelper new];
+	[_coreDataHelper setupCoreData];
 
 	return YES;
 }
@@ -75,14 +76,14 @@
 
 
 
-- (CoreDataHelper*)cdh {
+- (PCabCoreDataHelper*)cdh {
 	if (debug==1) {
 		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
 	}
 	if (!_coreDataHelper) {
 		static dispatch_once_t predicate;
 		dispatch_once(&predicate, ^{
-			_coreDataHelper = [CoreDataHelper new];
+			_coreDataHelper = [PCabCoreDataHelper new];
 		});
 		[_coreDataHelper setupCoreData];
 	}

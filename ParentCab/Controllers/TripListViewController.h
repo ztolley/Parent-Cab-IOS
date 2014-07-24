@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTVC.h"
 
-@interface TripListViewController : UITableViewController
+@interface TripListViewController : CoreDataTVC
+<UIActionSheetDelegate>
+
+@property (strong, nonatomic) UIActionSheet *clearConfirmActionSheet;
 
 
 @end
