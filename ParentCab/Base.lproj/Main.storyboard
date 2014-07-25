@@ -9,9 +9,15 @@
         <scene sceneID="QUa-mZ-ny0">
             <objects>
                 <navigationController id="mfK-aD-n1A" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="UJq-gR-dL9">
+                    <navigationBar key="navigationBar" opaque="NO" alpha="0.74999999999999978" contentMode="scaleToFill" translucent="NO" id="UJq-gR-dL9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="barTintColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="YAf-a6-vpV" kind="relationship" relationship="rootViewController" id="oAQ-qt-5sM"/>
@@ -39,7 +45,7 @@
                             <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ut-Gn-82r" userLabel="Bottom Button Panel">
                                 <rect key="frame" x="0.0" y="454" width="600" height="82"/>
                                 <subviews>
-                                    <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftN-Ns-zgl">
+                                    <slider hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftN-Ns-zgl">
                                         <rect key="frame" x="68" y="1" width="465" height="31"/>
                                         <connections>
                                             <action selector="sliderTouchUpInside:" destination="YAf-a6-vpV" eventType="valueChanged" id="hp5-Y0-J3G"/>
@@ -48,6 +54,7 @@
                                     <button contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGo-9s-pTq">
                                         <rect key="frame" x="0.0" y="-1" width="600" height="82"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                         <state key="normal" title="Start">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -112,7 +119,7 @@
                                     <constraint firstAttribute="trailing" secondItem="5J9-GV-7Ft" secondAttribute="trailing" id="wF1-dx-gOr"/>
                                 </constraints>
                             </view>
-                            <view opaque="NO" alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="re1-Wa-dcy" userLabel="Top Info Panel">
+                            <view opaque="NO" alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="re1-Wa-dcy" userLabel="Top Info Panel">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="92"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.00 miles" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dyz-ff-9e8">
@@ -131,7 +138,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="J5G-Uu-oKI" secondAttribute="centerY" constant="0.5" id="31l-dL-5u9"/>
                                     <constraint firstItem="J5G-Uu-oKI" firstAttribute="centerX" secondItem="Dyz-ff-9e8" secondAttribute="centerX" id="CGn-pI-p5c"/>
@@ -157,8 +164,10 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <navigationItem key="navigationItem" title="Parent Cab" id="YEN-Tf-Atg">
+                    <navigationItem key="navigationItem" title="Trip Recorder" id="YEN-Tf-Atg">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="xr0-Rf-03b"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="organize" id="agL-Rr-vIm">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="y1d-30-cP6" kind="show" identifier="JOURNEYLIST" id="GoJ-1Y-mwu"/>
                             </connections>
@@ -187,7 +196,7 @@
             <objects>
                 <tableViewController id="7sF-tP-UPd" customClass="TripRecordViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="gpz-JH-8B1">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="169-tq-lPu">
@@ -461,7 +470,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Journey" id="kXE-cv-Zm9">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="9EA-gf-q0n">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="BbK-cy-aqU">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="shareJourney:" destination="7sF-tP-UPd" id="kqw-IW-AU3"/>
                             </connections>
@@ -490,7 +503,7 @@
             <objects>
                 <tableViewController id="y1d-30-cP6" userLabel="Journey List" customClass="TripListViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="kkp-Mb-6k6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -585,6 +598,11 @@
                             <outlet property="delegate" destination="y1d-30-cP6" id="chK-Mb-WAy"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Journeys" id="rKa-yA-Bdh">
+                        <barButtonItem key="backBarButtonItem" title="Back" style="plain" id="YtH-h7-Bb3">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmr-vz-ROA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -592,6 +610,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="job-Rp-647"/>
+        <segue reference="vmG-tZ-YXb"/>
     </inferredMetricsTieBreakers>
 </document>

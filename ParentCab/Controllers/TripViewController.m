@@ -1,6 +1,5 @@
 #import "TripViewController.h"
 #import "TripRecordViewController.h"
-#import "JourneyRepository.h"
 #import "TripRecorderService.h"
 #import "Model.h"
 
