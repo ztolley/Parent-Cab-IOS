@@ -14,13 +14,10 @@
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *fare;
-@property (weak, nonatomic) IBOutlet UILabel *startStreet;
-@property (weak, nonatomic) IBOutlet UILabel *startPostCode;
-@property (weak, nonatomic) IBOutlet UILabel *endStreet;
-@property (weak, nonatomic) IBOutlet UILabel *endPostCode;
-@property (strong, nonatomic) Journey *journey;
+@property (weak, nonatomic) IBOutlet UILabel *startEnd;
 
 
+- (void)setJourney:(Journey *)journey;
 
 
 

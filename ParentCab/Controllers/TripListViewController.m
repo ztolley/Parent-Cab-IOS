@@ -61,11 +61,16 @@
 	static NSString *cellIdentifier = @"JourneyCell";
 	JourneyListCell *cell = (JourneyListCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
 
-	cell.journey = [self.frc objectAtIndexPath:indexPath];
-
+	Journey *journey = [self.frc objectAtIndexPath:indexPath];
+	
+	[cell setJourney:journey];
+	
 	return cell;
 }
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+	return 84.00;
+}
 
 
 
@@ -73,9 +78,11 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"ShowJourney"])
     {
-		JourneyListCell *cell = (JourneyListCell *)sender;
+		NSIndexPath *selectedIndexPath = [self.tableView indexPathForSelectedRow];
+		Journey *journey = [self.frc objectAtIndexPath:selectedIndexPath];
+		
         TripRecordViewController *upcomingViewController = [segue destinationViewController];
-		upcomingViewController.journey = cell.journey;
+		upcomingViewController.journey = journey;
     }
 }
 

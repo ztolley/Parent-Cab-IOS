@@ -9,7 +9,7 @@
 #import "CoreDataHelper.h"
 
 @implementation CoreDataHelper
-#define debug 1
+#define debug 0
 
 #pragma mark - FILES
 NSString *storeFilename = @"parentcab.sqlite";

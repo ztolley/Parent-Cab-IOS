@@ -20,17 +20,21 @@
 @implementation JourneyListCell
 
 - (void)awakeFromNib {
+	[super awakeFromNib];
 	overlay = [[RouteOverlay alloc] initWithMap:self.mapView];
 }
 
 - (void)setJourney:(Journey *)journey
 {
-	_journey = journey;
-	[overlay setDelegate:[[JourneyRouteDataSource alloc] initWithJourney:self.journey]];
-	self.startStreet.text = journey.startLocation.thoroughfare;
-	self.startPostCode.text = journey.startLocation.postcode;
-	self.endStreet.text = journey.endLocation.thoroughfare;
-	self.endPostCode.text = journey.endLocation.postcode;
-	self.fare.text = [NSString stringWithFormat:@"£%.02f", journey.fare];
+
+	[overlay setDelegate:[[JourneyRouteDataSource alloc] initWithJourney:journey]];
+	self.startEnd.text = [NSString stringWithFormat:@"%@ - %@",
+						  journey.startLocation.postcode,
+						  journey.endLocation.postcode];
+	
+	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+	NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
+	self.fare.text = numberAsString;
 }
 @end
