@@ -11,6 +11,8 @@
 #import "PCabCoreDataHelper.h"
 #import "AppDelegate.h"
 
+NSString *const RATEKEY = @"PencePerMeter";
+
 @interface TripRecorderService ()
 {
 	CLLocation *previousLocation;
@@ -227,7 +229,9 @@
 
 #pragma mark -
 - (double)fareForDistance:(double)distance {
-	double pricePerMeter = .000625; // put this in the model soon.
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+
+	double pricePerMeter = [defaults floatForKey:RATEKEY];
 	return distance * pricePerMeter;
 }
 

@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PCabCoreDataHelper.h"
 #import <CoreLocation/CoreLocation.h>
-
+#import "TripRecorderService.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong, readonly) PCabCoreDataHelper *coreDataHelper;
@@ -26,7 +26,7 @@
 	// Override point for customization after application launch.
 	_coreDataHelper = [PCabCoreDataHelper new];
 	[_coreDataHelper setupCoreData];
-
+	[self checkDefaultRate];
 	return YES;
 }
 
@@ -89,7 +89,24 @@
 	}
 	return _coreDataHelper;
 }
+- (void)checkDefaultRate {
+	
+	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	NSBundle* mainBundle = [NSBundle mainBundle];
 
+	
+	// See if there is a default already
+	float defaultRate = [defaults floatForKey:RATEKEY];
+	
+	if (defaultRate == 0) {
+		NSNumber *appDefaultRate = [mainBundle objectForInfoDictionaryKey:RATEKEY];
+		[defaults setFloat:appDefaultRate.floatValue forKey:RATEKEY];
+	}
+	
+	// if not then set it.
+	
+	[mainBundle objectForInfoDictionaryKey:@"EntityProgramUrl"];
+}
 
 
 @end

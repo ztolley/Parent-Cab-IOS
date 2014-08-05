@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SettingsViewController : UIViewController
+<UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *rateField;
 
 @end

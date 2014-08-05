@@ -45,3 +45,5 @@ typedef void (^ JourneyBlock)(Journey *journey);
 
 FOUNDATION_EXPORT NSString *const TRIPSERVICEFARECHANGE;
 FOUNDATION_EXPORT NSString *const TRIPSERVICEDISTANCECHANGE;
+
+extern NSString *const RATEKEY;
