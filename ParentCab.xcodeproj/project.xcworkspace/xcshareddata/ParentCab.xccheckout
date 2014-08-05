@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8B8E1823-0EC5-492B-9EB2-0AF9F730BD31</string>
+	<key>IDESourceControlProjectName</key>
+	<string>ParentCab</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>F46D1D8EEF15F0EDF0590A6E93E243D5B542AF8D</key>
+		<string>https://bitbucket.org/ztolley/parent-cab-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>ParentCab.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>F46D1D8EEF15F0EDF0590A6E93E243D5B542AF8D</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/ztolley/parent-cab-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>F46D1D8EEF15F0EDF0590A6E93E243D5B542AF8D</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>F46D1D8EEF15F0EDF0590A6E93E243D5B542AF8D</string>
+			<key>IDESourceControlWCCName</key>
+			<string>ParentCab</string>
+		</dict>
+	</array>
+</dict>
+</plist>

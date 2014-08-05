@@ -31,6 +31,8 @@
 		787FA223197AAC73004B084E /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA221197AAC73004B084E /* Step.m */; };
 		787FA226197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
 		787FA227197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
+		78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
+		78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
 		78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
 		78B178B01981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
 		78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
@@ -89,6 +91,8 @@
 		787FA224197AAC73004B084E /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
 		787FA225197AAC73004B084E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		787FA228197AAC84004B084E /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
+		78929744198AFDCB00581F81 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		78929745198AFDCB00581F81 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		78B178AD1981145600380B71 /* CoreDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTVC.h; sourceTree = "<group>"; };
 		78B178AE1981145600380B71 /* CoreDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTVC.m; sourceTree = "<group>"; };
 		78B178B119812F6500380B71 /* PCabCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCabCoreDataHelper.h; sourceTree = "<group>"; };
@@ -189,6 +193,8 @@
 				787FA1FD197AAAB5004B084E /* TripRecordViewController.m */,
 				787FA1FE197AAAB5004B084E /* TripViewController.h */,
 				787FA1FF197AAAB5004B084E /* TripViewController.m */,
+				78929744198AFDCB00581F81 /* SettingsViewController.h */,
+				78929745198AFDCB00581F81 /* SettingsViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -368,6 +374,7 @@
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,
 				78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */,
 				787FA222197AAC73004B084E /* Step.m in Sources */,
+				78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */,
 				787FA204197AAAC1004B084E /* TripListViewController.m in Sources */,
 				787FA200197AAAB5004B084E /* TripRecordViewController.m in Sources */,
@@ -385,6 +392,7 @@
 				78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				78D51B6E197D443600710E1C /* CoreDataHelper.m in Sources */,
 				787FA21F197AAC72004B084E /* Journey.m in Sources */,
+				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				787FA223197AAC73004B084E /* Step.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,
 				787FA1EC197AAA24004B084E /* ParentCabTests.m in Sources */,
@@ -448,7 +456,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -484,7 +492,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -500,6 +508,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -514,6 +523,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -533,6 +543,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ParentCabTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -550,6 +561,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = ParentCabTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";

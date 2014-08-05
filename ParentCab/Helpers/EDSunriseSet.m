@@ -91,7 +91,7 @@
 @synthesize astronomicalTwilightEnd=_astronomicalTwilightEnd, astronomicalTwilightStart=_astronomicalTwilightStart;
 
 
-static const int minutesInDay= 60.0*24.0;
+//static const int minutesInDay= 60.0*24.0;
 static const int secondsInHour= 60.0*60.0;
 
 #pragma mark -
