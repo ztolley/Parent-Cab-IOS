@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>PencePerMeter</key>
-	<real>0.000625</real>
+	<real>0.63</real>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This Application need to know your location to do it&apos;s job, is that ok?</string>
 	<key>CFBundleDevelopmentRegion</key>

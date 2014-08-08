@@ -8,8 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SettingsViewController : UIViewController
-<UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *rateField;
+@interface SettingsViewController : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UITextField *rateField;
+
+- (IBAction)cancel:(id)sender;
+- (IBAction)done:(id)sender;
+
 
 @end

@@ -216,7 +216,6 @@ NSString *const RATEKEY = @"PencePerMeter";
 - (void)batteryChanged:(NSNotification *)notification {
     UIDevice *device = [UIDevice currentDevice];
     [self setAccuracyForPower:[device batteryState]];
-    NSLog(@"State: %li Charge: %f", device.batteryState, device.batteryLevel);
 }
 - (void)setAccuracyForPower:(UIDeviceBatteryState)state {
 	if (state == UIDeviceBatteryStateCharging || state == UIDeviceBatteryStateFull) {
@@ -231,8 +230,8 @@ NSString *const RATEKEY = @"PencePerMeter";
 - (double)fareForDistance:(double)distance {
 	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
 
-	double pricePerMeter = [defaults floatForKey:RATEKEY];
-	return distance * pricePerMeter;
+	double pricePerkm = [defaults floatForKey:RATEKEY];
+	return (distance/1000) * pricePerkm;
 }
 
 
