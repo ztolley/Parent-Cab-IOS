@@ -98,6 +98,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 	newStep.location = stepLocation;
 	newStep.location.latitude = newLocation.coordinate.latitude;
 	newStep.location.longitude = newLocation.coordinate.longitude;
+	newStep.timestamp = [[NSDate date] timeIntervalSince1970];
 
 	[self.currentJourney addStepsObject:newStep];
 
