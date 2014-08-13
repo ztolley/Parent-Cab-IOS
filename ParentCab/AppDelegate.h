@@ -5,7 +5,7 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) PCabCoreDataHelper* cdh;
 
-- (PCabCoreDataHelper*)cdh;
 @end
 

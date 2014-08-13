@@ -12,6 +12,7 @@
 
 @class Journey;
 @class TripRecorderService;
+@class PCabCoreDataHelper;
 
 typedef void (^ JourneyBlock)(Journey *journey);
 
@@ -30,6 +31,7 @@ typedef void (^ JourneyBlock)(Journey *journey);
 @property (strong, nonatomic) Journey *currentJourney;
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (weak, nonatomic) id<TripRecorderServiceDelegate> delegate;
+@property (strong, nonatomic) PCabCoreDataHelper *cdh;
 
 
 // Actions

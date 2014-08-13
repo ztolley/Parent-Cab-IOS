@@ -17,7 +17,6 @@ NSString *const RATEKEY = @"PencePerMeter";
 {
 	CLLocation *previousLocation;
     Boolean recording;
-	PCabCoreDataHelper *cdh;
 }
 @end
 
@@ -45,7 +44,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 		
 		_geocoder = [[CLGeocoder alloc] init];
 	
-		cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
+		_cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
 	}
 
 	return self;
@@ -74,7 +73,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 		
 
 		
-		Location *startLocation = [cdh getNewLocation];
+		Location *startLocation = [_cdh getNewLocation];
 		startLocation.latitude = newLocation.coordinate.latitude;
 		startLocation.longitude = newLocation.coordinate.longitude;
 	
@@ -94,8 +93,8 @@ NSString *const RATEKEY = @"PencePerMeter";
 	
 	}
 
-	Step *newStep = [cdh getNewStep];
-	Location *stepLocation = [cdh getNewLocation];
+	Step *newStep = [_cdh getNewStep];
+	Location *stepLocation = [_cdh getNewLocation];
 	newStep.location = stepLocation;
 	newStep.location.latitude = newLocation.coordinate.latitude;
 	newStep.location.longitude = newLocation.coordinate.longitude;
@@ -125,7 +124,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 - (void)startRecording {
 	if (recording == NO) {
 		[[UIApplication sharedApplication] setIdleTimerDisabled:YES];
-		self.currentJourney = [cdh getNewJourney];
+		self.currentJourney = [_cdh getNewJourney];
 		self.currentJourney.startTime = [[NSDate date] timeIntervalSince1970];
 		recording = YES;
 		[self.locationManager startUpdatingLocation];
@@ -140,7 +139,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 	}
 	
 	if (self.currentJourney) {
-		Location *endLocation = [cdh getNewLocation];
+		Location *endLocation = [_cdh getNewLocation];
 		endLocation.latitude = previousLocation.coordinate.latitude;
 		endLocation.longitude = previousLocation.coordinate.longitude;
 		

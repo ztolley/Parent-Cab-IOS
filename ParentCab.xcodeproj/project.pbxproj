@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */; };
 		787FA1D2197AAA24004B084E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1D1197AAA24004B084E /* main.m */; };
 		787FA1D5197AAA24004B084E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1D4197AAA24004B084E /* AppDelegate.m */; };
 		787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1D6197AAA24004B084E /* ParentCab.xcdatamodeld */; };
 		787FA1DE197AAA24004B084E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 787FA1DC197AAA24004B084E /* Main.storyboard */; };
 		787FA1E0197AAA24004B084E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 787FA1DF197AAA24004B084E /* Images.xcassets */; };
-		787FA1EC197AAA24004B084E /* ParentCabTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1EB197AAA24004B084E /* ParentCabTests.m */; };
 		787FA1FB197AAA9B004B084E /* GoogleMapsImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1FA197AAA9B004B084E /* GoogleMapsImage.m */; };
 		787FA200197AAAB5004B084E /* TripRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1FD197AAAB5004B084E /* TripRecordViewController.m */; };
 		787FA201197AAAB5004B084E /* TripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1FF197AAAB5004B084E /* TripViewController.m */; };
@@ -38,7 +38,7 @@
 		78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
-		78D51B6E197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
+		78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripRecorderServiceTests.m; sourceTree = "<group>"; };
 		787FA1CC197AAA24004B084E /* ParentCab.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ParentCab.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		787FA1D0197AAA24004B084E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		787FA1D1197AAA24004B084E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -62,7 +63,6 @@
 		787FA1DF197AAA24004B084E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		787FA1E5197AAA24004B084E /* ParentCabTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ParentCabTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		787FA1EA197AAA24004B084E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		787FA1EB197AAA24004B084E /* ParentCabTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ParentCabTests.m; sourceTree = "<group>"; };
 		787FA1F9197AAA9B004B084E /* GoogleMapsImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoogleMapsImage.h; sourceTree = "<group>"; };
 		787FA1FA197AAA9B004B084E /* GoogleMapsImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoogleMapsImage.m; sourceTree = "<group>"; };
 		787FA1FC197AAAB5004B084E /* TripRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TripRecordViewController.h; sourceTree = "<group>"; };
@@ -99,6 +99,8 @@
 		78B178B219812F6500380B71 /* PCabCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCabCoreDataHelper.m; sourceTree = "<group>"; };
 		78D51B6B197D443600710E1C /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		78D51B6C197D443600710E1C /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,8 +172,10 @@
 		787FA1E8197AAA24004B084E /* ParentCabTests */ = {
 			isa = PBXGroup;
 			children = (
-				787FA1EB197AAA24004B084E /* ParentCabTests.m */,
 				787FA1E9197AAA24004B084E /* Supporting Files */,
+				78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */,
+				78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */,
+				785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */,
 			);
 			path = ParentCabTests;
 			sourceTree = "<group>";
@@ -390,12 +394,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
-				78D51B6E197D443600710E1C /* CoreDataHelper.m in Sources */,
 				787FA21F197AAC72004B084E /* Journey.m in Sources */,
 				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				787FA223197AAC73004B084E /* Step.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,
-				787FA1EC197AAA24004B084E /* ParentCabTests.m in Sources */,
+				78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */,
+				785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */,
 				78B178B01981145600380B71 /* CoreDataTVC.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
