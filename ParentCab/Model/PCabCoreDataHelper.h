@@ -18,5 +18,6 @@
 - (Journey *)getNewJourney;
 - (Step *)getNewStep;
 - (Location *)getNewLocation;
+- (void)deleteJourney:(Journey *)journey;
 
 @end

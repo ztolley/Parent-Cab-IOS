@@ -25,6 +25,9 @@
 	Location *location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.context];
 	return location;
 }
+- (void)deleteJourney:(Journey *)journey {
+	[self.context deleteObject:journey];
+}
 
 
 @end

@@ -190,25 +190,17 @@ NSString *const RATEKEY = @"PencePerMeter";
 		recording = NO;
 	}
 
-	previousLocation = nil;
-	self.currentJourney = nil;
-	[_delegate tripRecorder:self updatedDistance:0.00];
-	[_delegate tripRecorder:self updatedFare:0.00];
-
-}
-
-- (void)clearCurrent {
+	[self.cdh deleteJourney:self.currentJourney];
 	
-	if (recording == YES) {
-		[self.locationManager stopUpdatingLocation];
-		recording = NO;
-	}
-		
+	
 	previousLocation = nil;
 	self.currentJourney = nil;
 	[_delegate tripRecorder:self updatedDistance:0.00];
 	[_delegate tripRecorder:self updatedFare:0.00];
+
 }
+
+
 
 
 
