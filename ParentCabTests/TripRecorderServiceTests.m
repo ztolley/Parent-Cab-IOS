@@ -36,7 +36,6 @@
 	tripRecorderService.cdh = cdh;
 
 }
-
 - (void)tearDown {
 	[super tearDown];
 	NSManagedObjectContext *context = cdh.context;
@@ -55,14 +54,12 @@
 	
 }
 
-
-
+// Journey Starts
 - (void)testRecordStartTimeWhenJourneyStarts {
 	[tripRecorderService startRecording];
 	XCTAssertNotNil(tripRecorderService.currentJourney,					@"Test there is a journey object to hold the time");
 	XCTAssertTrue(tripRecorderService.currentJourney.startTime != 0,	@"Make sure the time object has been set");
 }
-
 - (void)testStartInitiatesLocationTracking {
 	id locationManagerMock = [OCMockObject mockForClass:[CLLocationManager class]];
 	[[locationManagerMock expect] startUpdatingLocation];
@@ -72,7 +69,6 @@
 	[locationManagerMock verify];
 	
 }
-
 - (void)testStartCreatesNewJourney {
 	[tripRecorderService startRecording];
 	
@@ -82,8 +78,6 @@
 	[tripRecorderService startRecording];
 	XCTAssertNotEqual(tripRecorderService.currentJourney.startTime, 0, @"The journey has been populated with a time");
 }
-
-
 
 
 // Location changes
@@ -131,7 +125,6 @@
 }
 
 
-
 // Reset
 - (void)testResetClearsAwayJourney {
 	
@@ -159,15 +152,13 @@
 	[tripRecorderService reset];
 	[locationManagerMock verify];
 }
-
-
-
 - (void)testResetIssuesFareZeroNotification {
 	
 }
 - (void)testResetIssuesDistanceZeroNotification {
 	
 }
+
 
 // Stop
 - (void)testStopStopsLocationTracking {

@@ -5,13 +5,13 @@
 //  Created by Zac Tolley on 10/10/2012.
 //  Copyright (c) 2012 Exsite Consultants. All rights reserved.
 //
+
 #import <UIKit/UIKit.h>
 #import "TripRecorderService.h"
 #import "Model.h"
 #import "PCabCoreDataHelper.h"
 #import "AppDelegate.h"
-
-NSString *const RATEKEY = @"PencePerMeter";
+#import "FareService.h"
 
 @interface TripRecorderService ()
 {
@@ -45,6 +45,7 @@ NSString *const RATEKEY = @"PencePerMeter";
 		_geocoder = [[CLGeocoder alloc] init];
 	
 		_cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
+		_fareService = [[FareService alloc] init];
 	}
 
 	return self;
@@ -54,6 +55,39 @@ NSString *const RATEKEY = @"PencePerMeter";
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
 	NSLog(@"%@", error);
 }
+
+- (void)setInitialLocation:(CLLocation*)location {
+	
+	Location *startLocation = [_cdh getNewLocation];
+	startLocation.latitude = location.coordinate.latitude;
+	startLocation.longitude = location.coordinate.longitude;
+	
+	[_geocoder reverseGeocodeLocation:location completionHandler:^(NSArray *placemarks, NSError *error) {
+		if (error){
+			NSLog(@"Geocode failed with error: %@", error);
+			return;
+		}
+		
+		CLPlacemark *placement = placemarks.lastObject;
+		startLocation.postcode = placement.postalCode;
+		startLocation.thoroughfare = placement.thoroughfare;
+	}];
+	
+	
+	self.currentJourney.startLocation = startLocation;
+}
+
+- (void)addLocation:(CLLocation *)location {
+	Step *newStep = [_cdh getNewStep];
+	Location *stepLocation = [_cdh getNewLocation];
+	newStep.location = stepLocation;
+	newStep.location.latitude = location.coordinate.latitude;
+	newStep.location.longitude = location.coordinate.longitude;
+	newStep.timestamp = [[NSDate date] timeIntervalSince1970];
+	
+	[self.currentJourney addStepsObject:newStep];
+}
+
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
  	
 	// Get the last location in the array
@@ -64,44 +98,22 @@ NSString *const RATEKEY = @"PencePerMeter";
 		return;
 	}
 	
-	// Is there a current location? if so then figure out the distance between the two
-	if (previousLocation != nil) {
-		CLLocationDistance distanceFromLastPoint = [previousLocation distanceFromLocation:newLocation];
-		self.currentJourney.distance += distanceFromLastPoint;
-		self.currentJourney.fare = [self fareForDistance:self.currentJourney.distance];
-	} else {
-		
-
-		
-		Location *startLocation = [_cdh getNewLocation];
-		startLocation.latitude = newLocation.coordinate.latitude;
-		startLocation.longitude = newLocation.coordinate.longitude;
-	
-		[_geocoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-			if (error){
-				NSLog(@"Geocode failed with error: %@", error);
-				return;
-			}
-			
-			CLPlacemark *placement = placemarks.lastObject;
-			startLocation.postcode = placement.postalCode;
-			startLocation.thoroughfare = placement.thoroughfare;
-		}];
-		
-		
-		self.currentJourney.startLocation = startLocation;
-	
+	// If this is the first location then record it as such.
+	if (previousLocation == nil) {
+		[self setInitialLocation:newLocation];
 	}
-
-	Step *newStep = [_cdh getNewStep];
-	Location *stepLocation = [_cdh getNewLocation];
-	newStep.location = stepLocation;
-	newStep.location.latitude = newLocation.coordinate.latitude;
-	newStep.location.longitude = newLocation.coordinate.longitude;
-	newStep.timestamp = [[NSDate date] timeIntervalSince1970];
-
-	[self.currentJourney addStepsObject:newStep];
-
+	
+	// No matter what, add a step
+	[self addLocation:newLocation];
+	
+	
+	// Is there a current location? if so then figure out the distance and fare between the two points
+	if (previousLocation != nil) {
+		struct Fare fare = [self.fareService fareForMoveFromLocation:previousLocation toLocation:newLocation];
+		self.currentJourney.fare += fare.money;
+		self.currentJourney.distance += fare.distance;
+	}
+	
 	previousLocation = newLocation;
 	
 	[_delegate tripRecorder:self updatedDistance: self.currentJourney.distance];
@@ -215,15 +227,6 @@ NSString *const RATEKEY = @"PencePerMeter";
 	} else {
 		[self.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 	}
-}
-
-
-#pragma mark -
-- (double)fareForDistance:(double)distance {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-
-	double pricePerkm = [defaults floatForKey:RATEKEY];
-	return (distance/1000) * pricePerkm;
 }
 
 

@@ -1,10 +1,9 @@
 #import "TripViewController.h"
 #import "TripRecordViewController.h"
-#import "TripRecorderService.h"
+
 #import "Model.h"
 
 @interface TripViewController ()
-<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, TripRecorderServiceDelegate>
 {
 	CLLocationManager *locationManager;
 }
@@ -27,6 +26,9 @@
 	[locationManager requestWhenInUseAuthorization];
 	
 	self.tripRecorder = [[TripRecorderService alloc] init];
+	
+	[self tripRecorder:nil updatedDistance:0.00];
+	[self tripRecorder:nil updatedFare:0.00];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -60,10 +62,10 @@
 }
 - (void)tripRecorder: (TripRecorderService *)tripRecorder updatedDistance: (double)distance {
 
-	double miles = distance * 0.000621371192;
+	//double miles = distance * 0.000621371192;
 	
 	// turn it into an Integer for output.
-	NSString *myString = [NSString stringWithFormat:@"%.2lf miles", miles];
+	NSString *myString = [NSString stringWithFormat:@"%.2lf km", (distance/1000)];
 	[[self distanceLabel] setText: myString];
 }
 - (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare {

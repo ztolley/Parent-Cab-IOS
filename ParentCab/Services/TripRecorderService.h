@@ -13,12 +13,13 @@
 @class Journey;
 @class TripRecorderService;
 @class PCabCoreDataHelper;
+@class FareService;
 
 typedef void (^ JourneyBlock)(Journey *journey);
 
 @protocol TripRecorderServiceDelegate <NSObject>
 @required
-- (void)tripRecorder: (TripRecorderService *)tripRecorder updatedDistance: (double)distance;
+- (void)tripRecorder:(TripRecorderService *)tripRecorder updatedDistance:(double)distance;
 - (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare;
 @end
 
@@ -32,6 +33,7 @@ typedef void (^ JourneyBlock)(Journey *journey);
 @property (strong, nonatomic) CLGeocoder *geocoder;
 @property (weak, nonatomic) id<TripRecorderServiceDelegate> delegate;
 @property (strong, nonatomic) PCabCoreDataHelper *cdh;
+@property (strong, nonatomic) FareService *fareService;
 
 
 // Actions
@@ -40,12 +42,6 @@ typedef void (^ JourneyBlock)(Journey *journey);
 - (void)resume;
 - (void)finish: (JourneyBlock)journeyBlock;
 - (void)reset;
-- (void)clearCurrent;
 
 
 @end
-
-FOUNDATION_EXPORT NSString *const TRIPSERVICEFARECHANGE;
-FOUNDATION_EXPORT NSString *const TRIPSERVICEDISTANCECHANGE;
-
-extern NSString *const RATEKEY;

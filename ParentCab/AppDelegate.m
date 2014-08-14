@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "PCabCoreDataHelper.h"
 #import <CoreLocation/CoreLocation.h>
-#import "TripRecorderService.h"
+#import "FareService.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong, readonly) PCabCoreDataHelper *coreDataHelper;

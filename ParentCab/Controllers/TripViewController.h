@@ -1,11 +1,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
-
+#import "TripRecorderService.h"
 
 @class TripRecorderService;
 
 @interface TripViewController : UIViewController
-
+<MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, TripRecorderServiceDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
 @property (weak, nonatomic) IBOutlet MKMapView *map;

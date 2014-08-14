@@ -1,5 +1,5 @@
 #import "SettingsViewController.h"
-#import "TripRecorderService.h"
+#import "FareService.h"
 
 
 @implementation SettingsViewController
