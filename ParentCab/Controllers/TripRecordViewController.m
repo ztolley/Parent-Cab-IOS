@@ -36,10 +36,10 @@
 	[shortTimeFormatter setDateStyle: NSDateFormatterNoStyle];
 	[shortTimeFormatter setTimeStyle:NSDateFormatterShortStyle];
 
-	double miles = self.journey.distance * 0.000621371192;
+	//double miles = self.journey.distance * 0.000621371192;
 	
 	self.fairLabel.text = [NSString stringWithFormat:@"£%.02f", self.journey.fare];
-	self.distanceLabel.text = [NSString stringWithFormat:@"%.02f miles", miles];
+	self.distanceLabel.text = [NSString stringWithFormat:@"%.02f km", self.journey.distance];
 	self.startTimeLabel.text = [shortTimeFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
 	self.startDateLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
 	self.startStreetLabel.text = self.journey.startLocation.thoroughfare;
