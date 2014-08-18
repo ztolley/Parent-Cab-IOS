@@ -10,7 +10,7 @@
 #import <XCTest/XCTest.h>
 #import <CoreLocation/CoreLocation.h>
 #import "FareService.h"
-
+#import "Settings.h"
 @interface FareServiceTests : XCTestCase
 
 @end

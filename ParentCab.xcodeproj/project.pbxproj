@@ -36,6 +36,9 @@
 		787FA227197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
 		78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
 		78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
+		789F6E8319A29E070092B555 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F6E8219A29E070092B555 /* Settings.m */; };
+		789F6E8419A29E070092B555 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F6E8219A29E070092B555 /* Settings.m */; };
+		789F6E8619A29E850092B555 /* SettingsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F6E8519A29E850092B555 /* SettingsTests.m */; };
 		78AF9B47199D204500D4DAD6 /* FareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B46199D204500D4DAD6 /* FareService.m */; };
 		78AF9B48199D204500D4DAD6 /* FareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B46199D204500D4DAD6 /* FareService.m */; };
 		78AF9B4A199D3FA700D4DAD6 /* FareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B49199D3FA700D4DAD6 /* FareServiceTests.m */; };
@@ -114,6 +117,9 @@
 		787FA228197AAC84004B084E /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
 		78929744198AFDCB00581F81 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		78929745198AFDCB00581F81 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		789F6E8119A29E070092B555 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
+		789F6E8219A29E070092B555 /* Settings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Settings.m; sourceTree = "<group>"; };
+		789F6E8519A29E850092B555 /* SettingsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsTests.m; sourceTree = "<group>"; };
 		78AF9B45199D204500D4DAD6 /* FareService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FareService.h; sourceTree = "<group>"; };
 		78AF9B46199D204500D4DAD6 /* FareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FareService.m; sourceTree = "<group>"; };
 		78AF9B49199D3FA700D4DAD6 /* FareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FareServiceTests.m; sourceTree = "<group>"; };
@@ -124,8 +130,8 @@
 		78B178B219812F6500380B71 /* PCabCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCabCoreDataHelper.m; sourceTree = "<group>"; };
 		78D51B6B197D443600710E1C /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		78D51B6C197D443600710E1C /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
-		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
-		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../CoreDataHelper.h; sourceTree = "<group>"; };
+		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../CoreDataHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +159,8 @@
 		781CB00119A224EB009C90D9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */,
+				78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */,
 				781CB00219A22536009C90D9 /* MockCLGeocoder.h */,
 				781CB00319A22536009C90D9 /* MockCLGeocoder.m */,
 				781CB00519A22742009C90D9 /* PCPlacemark.h */,
@@ -253,11 +261,10 @@
 				781CB00119A224EB009C90D9 /* Helpers */,
 				7873D7CF199BFFC5001DF9B1 /* usr */,
 				787FA1E9197AAA24004B084E /* Supporting Files */,
-				78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */,
-				78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */,
 				785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */,
 				78AF9B49199D3FA700D4DAD6 /* FareServiceTests.m */,
 				78AF9B4B199D5E6200D4DAD6 /* TripViewControllerTests.m */,
+				789F6E8519A29E850092B555 /* SettingsTests.m */,
 			);
 			path = ParentCabTests;
 			sourceTree = "<group>";
@@ -302,6 +309,8 @@
 				78D51B6C197D443600710E1C /* CoreDataHelper.m */,
 				78B178B119812F6500380B71 /* PCabCoreDataHelper.h */,
 				78B178B219812F6500380B71 /* PCabCoreDataHelper.m */,
+				789F6E8119A29E070092B555 /* Settings.h */,
+				789F6E8219A29E070092B555 /* Settings.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -471,6 +480,7 @@
 				787FA226197AAC73004B084E /* Location.m in Sources */,
 				78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				787FA21B197AAB68004B084E /* EDSunriseSet.m in Sources */,
+				789F6E8319A29E070092B555 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -484,6 +494,7 @@
 				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78AF9B4C199D5E6200D4DAD6 /* TripViewControllerTests.m in Sources */,
 				787FA223197AAC73004B084E /* Step.m in Sources */,
+				789F6E8419A29E070092B555 /* Settings.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,
 				781CB00719A22742009C90D9 /* PCPlacemark.m in Sources */,
 				78AF9B4A199D3FA700D4DAD6 /* FareServiceTests.m in Sources */,
@@ -491,6 +502,7 @@
 				78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */,
 				785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */,
 				78B178B01981145600380B71 /* CoreDataTVC.m in Sources */,
+				789F6E8619A29E850092B555 /* SettingsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

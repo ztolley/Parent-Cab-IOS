@@ -8,8 +8,9 @@
 
 #import "FareService.h"
 #import <CoreLocation/CoreLocation.h>
+#import "Settings.h"
 
-NSString *const RATEKEY = @"PencePerMeter";
+
 
 @implementation FareService
 

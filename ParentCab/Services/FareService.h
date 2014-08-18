@@ -17,6 +17,6 @@ struct Fare
 
 @interface FareService : NSObject
 - (struct Fare)fareForMoveFromLocation:(CLLocation *)startLocation toLocation:(CLLocation *)endLocation;
-extern NSString *const RATEKEY;
+
 @end
 
