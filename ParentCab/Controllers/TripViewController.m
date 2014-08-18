@@ -177,7 +177,7 @@
 	if (buttonIndex == 1) {
 
 		[self.tripRecorder finish:^(Journey *journey) {
-			[self performSegueWithIdentifier:@"TRIPREVIEW" sender:self];
+			[self performSegueWithIdentifier:@"TRIPREVIEW" sender:journey];
 		}];
 	} else {
 		[self.tripRecorder reset];
@@ -185,11 +185,13 @@
 
 }
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	
+	Journey *journey = (Journey *)sender;
+	
 	if ([[segue identifier] isEqualToString:@"TRIPREVIEW"])
 	{
 		TripRecordViewController *upcomingViewController = [segue destinationViewController];
-		upcomingViewController.journey = self.tripRecorder.currentJourney;
-		[self reset:nil];
+		upcomingViewController.journey = journey;
 	}
 
 }

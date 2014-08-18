@@ -18,11 +18,12 @@
 @implementation TripViewControllerTests
 {
 	TripViewController *tvc;
+	UILabel *distanceLabel;
 }
 - (void)setUp {
     [super setUp];
 	tvc = [[TripViewController alloc] init];
-	UILabel *distanceLabel = [[UILabel alloc]init];
+	distanceLabel = [[UILabel alloc] init];
 	tvc.distanceLabel = distanceLabel;
 	[tvc viewDidLoad];
 }
@@ -35,7 +36,9 @@
 - (void)testDistanceChangesAreShownInKm {
 	[tvc tripRecorder:nil updatedDistance:1200];
 
-	XCTAssert([tvc.distanceLabel.text isEqualToString:@"1.20 km"]);
+	NSString *actual = tvc.distanceLabel.text;
+	
+	XCTAssert([actual isEqualToString:@"1.20 km"]);
 }
 
 

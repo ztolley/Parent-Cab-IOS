@@ -13,16 +13,19 @@
 #import "TripRecorderService.h"
 #import "AppDelegate.h"
 #import "model.h"
+#import "MockCLGeocoder.h"
 #import <OCMock/OCMock.h>
 
 @interface TripRecorderServiceTests : XCTestCase
-
+<TripRecorderServiceDelegate>
 @end
 
 @implementation TripRecorderServiceTests
 {
 	TripRecorderService *tripRecorderService;
 	PCabCoreDataHelper *cdh;
+	double delegateDistance;
+	double delegateFare;
 }
 
 - (void)setUp {
@@ -34,7 +37,12 @@
 	// switch the core data helper for one that we created that has an in memory context for testing
 	tripRecorderService = [[TripRecorderService alloc] init];
 	tripRecorderService.cdh = cdh;
-
+	tripRecorderService.delegate = self;
+	
+	MockCLGeocoder *mockGeocoder = [[MockCLGeocoder alloc] init];
+	tripRecorderService.geocoder = mockGeocoder;
+	
+	// Plus in a face reverse geocoder ...
 }
 - (void)tearDown {
 	[super tearDown];
@@ -51,8 +59,18 @@
 
 	tripRecorderService = nil;
 	cdh = nil;
+	delegateFare = 0;
+	delegateDistance = 0;
 	
 }
+
+- (void)tripRecorder:(TripRecorderService *)tripRecorder updatedDistance:(double)distance {
+	delegateDistance = distance;
+}
+- (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare {
+	delegateFare = fare;
+}
+
 
 // Journey Starts
 - (void)testRecordStartTimeWhenJourneyStarts {
@@ -125,22 +143,20 @@
 }
 
 
-// Reset
-- (void)testResetClearsAwayJourney {
-	
+// Reset deletes the current journey object
+- (void)testResetDeletesObjectInContext {
+
+	XCTAssertTrue([[self allJourneys] count] == 0);
 	
 	[tripRecorderService startRecording];
 	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.1874988592864875];
 	[tripRecorderService reset];
 	
 	// Check that the journey is no longer in the managed object context and the trip service has a nil current journey
-	XCTAssertNil(tripRecorderService.currentJourney,		@"Make sure we have a journey in the service still");
+	XCTAssertNil(tripRecorderService.currentJourney,@"Make sure we have a journey in the service still");
 	
-	NSArray *journeys = [self allJourneys];
-	XCTAssertTrue([journeys count] == 0,		@"Check that there are no journeys in the moc");
-	
-	NSArray *steps = [self allSteps];
-	XCTAssertTrue([steps count] == 0,			@"Check that there are no steps in the context");
+	XCTAssertTrue([[self allJourneys] count] == 0,	@"Check that there are no journeys in the moc");
+	XCTAssertTrue([[self allSteps] count] == 0,		@"Check that there are no steps in the context");
 }
 - (void)testResetStopsLocationTracking {
 	[tripRecorderService startRecording];
@@ -152,11 +168,38 @@
 	[tripRecorderService reset];
 	[locationManagerMock verify];
 }
+
 - (void)testResetIssuesFareZeroNotification {
+
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
 	
+	XCTAssertEqual(delegateDistance, 138607.60);
+	
+	[tripRecorderService reset];
+	
+	XCTAssert(delegateFare == 0);
+
 }
 - (void)testResetIssuesDistanceZeroNotification {
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
 	
+	XCTAssert(delegateFare > 0);
+	
+	[tripRecorderService reset];
+	
+	XCTAssert(delegateFare == 0);
+}
+- (void)testResetDeletesTheJourneyObjectThatWasUsed {
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	[tripRecorderService reset];
+
+	XCTAssertNil(tripRecorderService.currentJourney);
 }
 
 
@@ -172,18 +215,75 @@
 	[locationManagerMock verify];
 }
 - (void)testStopRecordsFinalPositionAndTime {
+	
+	XCTestExpectation *endJourneyExpectation = [self expectationWithDescription:@"finish journey"];
+	
 	[tripRecorderService startRecording];
 	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
 	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
-	[tripRecorderService finish:nil];
+	[tripRecorderService finish:^(Journey *journey) {
+		XCTAssertNotEqual(journey.endTime, 0, @"Make sure there is an end time");
+		XCTAssertTrue(journey.endLocation.latitude  == 42.44994138650804,	@"Correct latitude");
+		XCTAssertTrue(journey.endLocation.longitude == -2.187498859286487,	@"Correct longitude");
+		[endJourneyExpectation fulfill];
+	}];
 	
-	Journey *journey = tripRecorderService.currentJourney;
-
-	XCTAssertNotEqual(journey.endTime, 0, @"Make sure there is an end time");
-	XCTAssertTrue(journey.endLocation.latitude  == 42.44994138650804,	@"Correct latitude");
-	XCTAssertTrue(journey.endLocation.longitude == -2.187498859286487,	@"Correct longitude");
+	[self waitForExpectationsWithTimeout:5 handler:nil];
 }
 
+// Finish
+// Test that ending a journey saves it in the context
+- (void)testFinishJourneyStillInContextAfterFinish {
+	XCTestExpectation *endJourneyExpectation = [self expectationWithDescription:@"finish journey"];
+
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	[tripRecorderService finish:^(Journey *journey) {
+		NSArray *allJourneys = [self allJourneys];
+		XCTAssertEqual(allJourneys.count, 1);
+		[endJourneyExpectation fulfill];
+	}];
+	
+	[self waitForExpectationsWithTimeout:5 handler:nil];
+}
+
+// Test that ending a journey saves that journey but sets the current journey to nil
+- (void)testJourneyEndResetsJourney {
+	
+	XCTestExpectation *endJourneyExpectation = [self expectationWithDescription:@"finish journey"];
+
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	[tripRecorderService finish:^(Journey *journey) {
+		XCTAssertNil(tripRecorderService.currentJourney);
+		[endJourneyExpectation fulfill];
+	}];
+	[self waitForExpectationsWithTimeout:5 handler:nil];
+}
+
+
+// Test that ending a journey resets the screen.
+- (void)testJourneyEndResetsValues {
+
+	XCTestExpectation *endJourneyExpectation = [self expectationWithDescription:@"finish journey"];
+
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	[tripRecorderService finish:^(Journey *journey) {
+		XCTAssertEqual(delegateDistance, 0);
+		XCTAssertEqual(delegateFare, 0);
+		
+		[endJourneyExpectation fulfill];
+	}];
+	[self waitForExpectationsWithTimeout:5 handler:nil];
+
+}
 
 
 - (void)informDelegate:(TripRecorderService *)service locationChangedToLatitude:(double)latitude Longitude:(double)longitude {
@@ -198,7 +298,6 @@
 	[service locationManager:nil didUpdateLocations:locations];
 	
 }
-
 - (NSArray *)allSteps {
 	NSManagedObjectContext *context = cdh.context;
 	
@@ -209,7 +308,6 @@
 
 	return result;
 }
-
 - (NSArray *)allJourneys {
 	NSManagedObjectContext *context = cdh.context;
 	
@@ -221,4 +319,46 @@
 	return result;
 }
 
+
+// Delegate Protocol
+// Inform delegate of change in fare when position changes
+- (void)testSendFareToDelegate {
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	
+	XCTAssert(delegateFare > 0);
+
+}
+
+// Doesn't tell delegate of fare change on first location
+- (void)testDondSendFareToDelegateForSingleMove {
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	
+	XCTAssert(delegateFare == 0);
+	
+}
+
+// Inform delegate of change in distance when position changes
+- (void)testSendDistanceToDelegate {
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
+	
+	XCTAssertEqual(delegateDistance, 138607.60);
+	
+}
+// Doesn't tell delegate of distamce change on first location
+- (void)testDontSendDistanceToDelegateForSingleMove {
+	
+	[tripRecorderService startRecording];
+	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
+
+	XCTAssertEqual(delegateDistance,0);
+	
+}
 @end

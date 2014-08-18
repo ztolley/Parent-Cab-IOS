@@ -42,6 +42,6 @@ typedef void (^ JourneyBlock)(Journey *journey);
 - (void)resume;
 - (void)finish: (JourneyBlock)journeyBlock;
 - (void)reset;
-
+- (void)deleteCurrentJourney;
 
 @end

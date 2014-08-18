@@ -68,6 +68,10 @@
 			return;
 		}
 		
+		if (placemarks == nil || placemarks.count == 0) {
+			return;
+		}
+		
 		CLPlacemark *placement = placemarks.lastObject;
 		startLocation.postcode = placement.postalCode;
 		startLocation.thoroughfare = placement.thoroughfare;
@@ -180,10 +184,16 @@
 	[_geocoder reverseGeocodeLocation:previousLocation completionHandler:^(NSArray *placemarks, NSError *error) {
 		
 		Journey *journey = self.currentJourney;
+
+		self.currentJourney = nil;
+		previousLocation = nil;
+		
+		[_delegate tripRecorder:self updatedDistance:0.00];
+		[_delegate tripRecorder:self updatedFare:0.00];
 		
 		if (error){
 			NSLog(@"Geocode failed with error: %@", error);
-		} else {
+		} else if (placemarks != nil && placemarks.count > 0) {
 			CLPlacemark *placement = placemarks.lastObject;
 			journey.endLocation.postcode = placement.postalCode;
 			journey.endLocation.thoroughfare = placement.thoroughfare;
@@ -201,19 +211,15 @@
 		[self.locationManager stopUpdatingLocation];
 		recording = NO;
 	}
-
+	
 	[self.cdh deleteJourney:self.currentJourney];
-	
-	
-	previousLocation = nil;
 	self.currentJourney = nil;
+	previousLocation = nil;
+
 	[_delegate tripRecorder:self updatedDistance:0.00];
 	[_delegate tripRecorder:self updatedFare:0.00];
 
 }
-
-
-
 
 
 #pragma mark PowerModeChange
