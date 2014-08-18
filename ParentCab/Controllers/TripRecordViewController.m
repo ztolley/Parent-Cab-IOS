@@ -28,6 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	
 	[super viewWillAppear:animated];
+	self.navigationController.navigationBarHidden = NO;
 	
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:@"d MMMM yyyy"];
