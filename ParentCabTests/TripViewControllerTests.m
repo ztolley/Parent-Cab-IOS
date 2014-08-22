@@ -56,6 +56,7 @@
 	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
 	
 	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
+	[controller viewDidLoad];
 	controller.fareLabel = fareLabel;
 	
 	[controller tripRecorder:nil updatedFare:12.50];
@@ -69,6 +70,7 @@
 	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
 	
 	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
+	[controller viewDidLoad];
 	controller.fareLabel = fareLabel;
 	
 	[controller tripRecorder:nil updatedFare:12.50];

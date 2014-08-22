@@ -16,6 +16,7 @@
 {
 	RouteOverlay *overlay;
 	NSNumberFormatter *currencyNumberFormatter;
+	Settings *settings;
 }
 @end
 
@@ -28,12 +29,12 @@
 {
 	self = [super init];
 	if (self) {
-		[self setupFormatter:initSettings];
+		settings = initSettings;
 	}
 	return self;
 }
 
-- (void)setupFormatter:(Settings *)settings {
+- (void)setupFormatter {
 	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
 	[numberFormatter setLocale:settings.locale];
 	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
@@ -42,6 +43,7 @@
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
+	[self setupFormatter];
 	overlay = [[RouteOverlay alloc] initWithMap:self.mapView];
 }
 

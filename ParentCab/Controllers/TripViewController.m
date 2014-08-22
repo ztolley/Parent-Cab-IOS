@@ -7,6 +7,7 @@
 {
 	CLLocationManager *locationManager;
 	NSNumberFormatter *currencyNumberFormatter;
+	Settings *settings;
 }
 @end
 
@@ -19,11 +20,12 @@
 {
 	self = [super init];
 	if (self) {
-		[self setupFormatter:initSettings];
+		settings = initSettings;
+
 	}
 	return self;
 }
-- (void)setupFormatter:(Settings *)settings {
+- (void)setupFormatter {
 	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
 	[numberFormatter setLocale:settings.locale];
 	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
@@ -32,8 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-	self.settings = [Settings defaultSettings];
+	[self setupFormatter];
 	
 	// Hide all the buttons until we know we have access to the users location
 	[self showNoButtons];

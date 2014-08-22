@@ -18,7 +18,6 @@
 @property (weak, nonatomic) IBOutlet UIView *toolbarView;
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
-@property (strong, nonatomic) Settings *settings;
 
 - (instancetype)initWithSettings:(Settings *)settings;
 
