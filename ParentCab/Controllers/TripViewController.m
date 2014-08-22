@@ -1,6 +1,6 @@
 #import "TripViewController.h"
 #import "TripRecordViewController.h"
-
+#import "Settings.h"
 #import "Model.h"
 
 @interface TripViewController ()
@@ -15,6 +15,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	self.settings = [Settings defaultSettings];
+	
 	// Hide all the buttons until we know we have access to the users location
 	[self showNoButtons];
 	
@@ -70,7 +72,10 @@
 }
 - (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare {
 	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	
 	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+	[numberFormatter setLocale:self.settings.locale];
+	
 	NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:fare]];
 	
 	[[self fareLabel] setText:numberAsString];

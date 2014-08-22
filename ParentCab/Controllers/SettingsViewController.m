@@ -14,7 +14,7 @@
 	
     self = [super init];
     if (self) {
-		settings = [[Settings alloc] init];
+		settings = [Settings defaultSettings];
     }
 	
 	return self;

@@ -21,7 +21,7 @@
 
 - (void)setUp {
     [super setUp];
-	settings = [[Settings alloc] init];
+	settings = [Settings defaultSettings];
 	
 	defaults = [NSUserDefaults standardUserDefaults];
 	

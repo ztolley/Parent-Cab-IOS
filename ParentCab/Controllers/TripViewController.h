@@ -3,6 +3,7 @@
 #import "TripRecorderService.h"
 
 @class TripRecorderService;
+@class Settings;
 
 @interface TripViewController : UIViewController
 <MKMapViewDelegate, CLLocationManagerDelegate, UIAlertViewDelegate, TripRecorderServiceDelegate>
@@ -17,7 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIView *toolbarView;
 
 @property (weak, nonatomic) IBOutlet UISlider *slider;
-
+@property (strong, nonatomic) Settings *settings;
 
 - (IBAction)reset:(id)sender;
 - (IBAction)start:(id)sender;

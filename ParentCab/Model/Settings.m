@@ -12,6 +12,17 @@ NSString *const DISTANCEUNITKEY = @"DistanceUnit";
 
 @implementation Settings
 
++ (id)defaultSettings {
+	
+	static Settings *defaultSettings = nil;
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		defaultSettings = [[self alloc] init];
+	});
+	return defaultSettings;
+	
+}
+
 - (instancetype)init
 {
     self = [super init];

@@ -2,6 +2,8 @@
 
 @interface Settings : NSObject
 
++ (id)defaultSettings;
+
 - (void)setRate:(float)newRate;
 - (float)getRate;
 
