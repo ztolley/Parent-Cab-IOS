@@ -10,14 +10,35 @@
 #import "RouteOverlay.h"
 #import "JourneyRouteDataSource.h"
 #import "Model.h"
+#import "Settings.h"
 
 @interface JourneyListCell ()
 {
 	RouteOverlay *overlay;
+	NSNumberFormatter *currencyNumberFormatter;
 }
 @end
 
 @implementation JourneyListCell
+
+- (instancetype)init {
+	return [self initWithSettings:[Settings defaultSettings]];
+}
+- (instancetype)initWithSettings:(Settings *)initSettings
+{
+	self = [super init];
+	if (self) {
+		[self setupFormatter:initSettings];
+	}
+	return self;
+}
+
+- (void)setupFormatter:(Settings *)settings {
+	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setLocale:settings.locale];
+	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+	currencyNumberFormatter = numberFormatter;
+}
 
 - (void)awakeFromNib {
 	[super awakeFromNib];
@@ -32,9 +53,7 @@
 						  journey.startLocation.postcode,
 						  journey.endLocation.postcode];
 	
-	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
-	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-	NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
+	NSString *numberAsString = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
 	self.fare.text = numberAsString;
 }
 @end

@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 @class Journey;
+@class Settings;
 
 @interface JourneyListCell : UITableViewCell
+
+- (instancetype)initWithSettings:(Settings *)settings;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UILabel *fare;
