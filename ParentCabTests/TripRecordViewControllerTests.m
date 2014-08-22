@@ -1,3 +1,4 @@
+
 //
 //  TripRecordViewControllerTests.m
 //  ParentCab
@@ -8,6 +9,10 @@
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
+#import "Settings.h"
+#import "Journey.h"
+#import "PCabCoreDataHelper.h"
+#import "TripRecordViewController.h"
 
 @interface TripRecordViewControllerTests : XCTestCase
 
@@ -25,16 +30,84 @@
     [super tearDown];
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    XCTAssert(YES, @"Pass");
+- (void)testFareInPounds {
+	
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
+	
+	PCabCoreDataHelper *cdh = [[PCabCoreDataHelper alloc] init];
+	Journey *journey = [cdh getNewJourney];
+	journey.fare = 123.50;
+	
+	TripRecordViewController *tvc = [[TripRecordViewController alloc] initWithSettings:settings];
+	tvc.journey = journey;
+
+	UILabel *fareLabel = [[UILabel alloc] init];
+	tvc.fairLabel = fareLabel;
+	
+	[tvc viewWillAppear:NO];
+	
+	NSString *fareText = tvc.fairLabel.text;
+	
+	XCTAssert([fareText isEqualToString:@"£123.50"]);
 }
 
-- (void)testPerformanceExample {
-    // This is an example of a performance test case.
-    [self measureBlock:^{
-        // Put the code you want to measure the time of here.
-    }];
+- (void)testFareInDollars {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+	
+	PCabCoreDataHelper *cdh = [[PCabCoreDataHelper alloc] init];
+	Journey *journey = [cdh getNewJourney];
+	journey.fare = 123.50;
+	
+	TripRecordViewController *tvc = [[TripRecordViewController alloc] initWithSettings:settings];
+	tvc.journey = journey;
+	
+	UILabel *fareLabel = [[UILabel alloc] init];
+	tvc.fairLabel = fareLabel;
+	
+	[tvc viewWillAppear:NO];
+	
+	NSString *fareText = tvc.fairLabel.text;
+	
+	XCTAssert([fareText isEqualToString:@"$123.50"]);
+
+}
+
+- (void)testSharedFareInPounds {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
+	
+	PCabCoreDataHelper *cdh = [[PCabCoreDataHelper alloc] init];
+	Journey *journey = [cdh getNewJourney];
+	journey.fare = 123.50;
+	
+	TripRecordViewController *tvc = [[TripRecordViewController alloc] initWithSettings:settings];
+	
+	
+	NSString *shareText = [tvc generateEmailBodyForJourney:journey];
+	
+	
+	XCTAssert([shareText hasPrefix:@"Fare: £123.50"]);
+	
+}
+
+- (void)testSharedFareInDollars {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+	
+	PCabCoreDataHelper *cdh = [[PCabCoreDataHelper alloc] init];
+	Journey *journey = [cdh getNewJourney];
+	journey.fare = 123.50;
+	
+	TripRecordViewController *tvc = [[TripRecordViewController alloc] initWithSettings:settings];
+
+	
+	NSString *shareText = [tvc generateEmailBodyForJourney:journey];
+	
+	
+	XCTAssert([shareText hasPrefix:@"Fare: $123.50"]);
+	
 }
 
 @end

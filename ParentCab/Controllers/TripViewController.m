@@ -6,11 +6,29 @@
 @interface TripViewController ()
 {
 	CLLocationManager *locationManager;
+	NSNumberFormatter *currencyNumberFormatter;
 }
 @end
 
 @implementation TripViewController
 
+- (instancetype)init {
+	return [self initWithSettings:[Settings defaultSettings]];
+}
+- (instancetype)initWithSettings:(Settings *)initSettings
+{
+	self = [super init];
+	if (self) {
+		[self setupFormatter:initSettings];
+	}
+	return self;
+}
+- (void)setupFormatter:(Settings *)settings {
+	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setLocale:settings.locale];
+	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+	currencyNumberFormatter = numberFormatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -71,12 +89,8 @@
 	[[self distanceLabel] setText: myString];
 }
 - (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare {
-	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
 	
-	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-	[numberFormatter setLocale:self.settings.locale];
-	
-	NSString *numberAsString = [numberFormatter stringFromNumber:[NSNumber numberWithDouble:fare]];
+	NSString *numberAsString = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:fare]];
 	
 	[[self fareLabel] setText:numberAsString];
 }

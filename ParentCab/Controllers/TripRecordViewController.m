@@ -11,14 +11,35 @@
 #import "RouteOverlay.h"
 #import "JourneyRouteDataSource.h"
 #import "GoogleMapsImage.h"
+#import "Settings.h"
 
 @interface TripRecordViewController ()
 {
 	RouteOverlay *overlay;
+	NSNumberFormatter *currencyNumberFormatter;
 }
 @end
 
 @implementation TripRecordViewController
+
+- (instancetype)init {
+	return [self initWithSettings:[Settings defaultSettings]];
+}
+- (instancetype)initWithSettings:(Settings *)initSettings
+{
+	self = [super init];
+	if (self) {
+		[self setupFormatter:initSettings];
+	}
+	return self;
+}
+
+- (void)setupFormatter:(Settings *)settings {
+	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+	[numberFormatter setLocale:settings.locale];
+	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
+	currencyNumberFormatter = numberFormatter;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,7 +59,7 @@
 
 	//double miles = self.journey.distance * 0.000621371192;
 	
-	self.fairLabel.text = [NSString stringWithFormat:@"£%.02f", self.journey.fare];
+	self.fairLabel.text = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:self.journey.fare]];
 	self.distanceLabel.text = [NSString stringWithFormat:@"%.02f km", self.journey.distance];
 	self.startTimeLabel.text = [shortTimeFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
 	self.startDateLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
@@ -69,9 +90,10 @@
 
 }
 - (NSString *)generateEmailBodyForJourney:(Journey *)journey {
+	NSString *fare = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
 	
-	NSString *result = [NSString stringWithFormat:@"Fare: £%.02f\nStart: %@,%@\nEnd: %@,%@",
-						journey.fare,
+	NSString *result = [NSString stringWithFormat:@"Fare: %@\nStart: %@,%@\nEnd: %@,%@",
+						fare,
 						journey.startLocation.thoroughfare,
 						journey.startLocation.postcode,
 						journey.endLocation.thoroughfare,

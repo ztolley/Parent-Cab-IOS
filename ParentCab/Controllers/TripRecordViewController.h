@@ -10,6 +10,7 @@
 #import <MapKit/MapKit.h>
 
 @class Journey;
+@class Settings;
 
 @interface TripRecordViewController : UITableViewController
 
@@ -26,9 +27,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *endStreetLabel;
 @property (weak, nonatomic) IBOutlet UILabel *endPostCodeLabel;
 
+- (instancetype)initWithSettings:(Settings *)initSettings;
 
 - (IBAction)shareJourney:(id)sender;
-
+- (NSString *)generateEmailBodyForJourney:(Journey *)journey;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) Journey *journey;

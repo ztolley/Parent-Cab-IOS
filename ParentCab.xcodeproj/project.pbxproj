@@ -35,6 +35,7 @@
 		787FA226197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
 		787FA227197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
 		7885A46E19A7AD9F0045330F /* JourneyListCellTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885A46D19A7AD9F0045330F /* JourneyListCellTests.m */; };
+		7885A47019A7CB780045330F /* TripRecordViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7885A46F19A7CB780045330F /* TripRecordViewControllerTests.m */; };
 		78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
 		78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78929745198AFDCB00581F81 /* SettingsViewController.m */; };
 		789F6E8319A29E070092B555 /* Settings.m in Sources */ = {isa = PBXBuildFile; fileRef = 789F6E8219A29E070092B555 /* Settings.m */; };
@@ -117,6 +118,7 @@
 		787FA225197AAC73004B084E /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
 		787FA228197AAC84004B084E /* model.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = model.h; sourceTree = "<group>"; };
 		7885A46D19A7AD9F0045330F /* JourneyListCellTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyListCellTests.m; sourceTree = "<group>"; };
+		7885A46F19A7CB780045330F /* TripRecordViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripRecordViewControllerTests.m; sourceTree = "<group>"; };
 		78929744198AFDCB00581F81 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		78929745198AFDCB00581F81 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		789F6E8119A29E070092B555 /* Settings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Settings.h; sourceTree = "<group>"; };
@@ -268,6 +270,7 @@
 				78AF9B4B199D5E6200D4DAD6 /* TripViewControllerTests.m */,
 				789F6E8519A29E850092B555 /* SettingsTests.m */,
 				7885A46D19A7AD9F0045330F /* JourneyListCellTests.m */,
+				7885A46F19A7CB780045330F /* TripRecordViewControllerTests.m */,
 			);
 			path = ParentCabTests;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				787FA21F197AAC72004B084E /* Journey.m in Sources */,
 				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78AF9B4C199D5E6200D4DAD6 /* TripViewControllerTests.m in Sources */,
+				7885A47019A7CB780045330F /* TripRecordViewControllerTests.m in Sources */,
 				787FA223197AAC73004B084E /* Step.m in Sources */,
 				789F6E8419A29E070092B555 /* Settings.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,

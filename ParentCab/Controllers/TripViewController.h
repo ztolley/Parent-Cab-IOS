@@ -20,6 +20,8 @@
 @property (weak, nonatomic) IBOutlet UISlider *slider;
 @property (strong, nonatomic) Settings *settings;
 
+- (instancetype)initWithSettings:(Settings *)settings;
+
 - (IBAction)reset:(id)sender;
 - (IBAction)start:(id)sender;
 - (IBAction)sliderTouchUpInside:(id)sender;

@@ -52,23 +52,28 @@
 
 - (void)testShowCorrectCurrencyForGBUser {
 	
-	NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
-	tvc.settings.locale = locale;
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
 	
-	[tvc tripRecorder:nil updatedFare:12.50];
+	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
+	controller.fareLabel = fareLabel;
 	
-	NSString *actual = tvc.fareLabel.text;
+	[controller tripRecorder:nil updatedFare:12.50];
+	
+	NSString *actual = controller.fareLabel.text;
 	XCTAssert([actual isEqualToString:@"£12.50"]);
 
 }
 - (void)testShowCorrectCurrencyForUSUser {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
 	
-	NSLocale *locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
-	tvc.settings.locale = locale;
+	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
+	controller.fareLabel = fareLabel;
 	
-	[tvc tripRecorder:nil updatedFare:12.50];
+	[controller tripRecorder:nil updatedFare:12.50];
 	
-	NSString *actual = tvc.fareLabel.text;
+	NSString *actual = controller.fareLabel.text;
 	XCTAssert([actual isEqualToString:@"$12.50"]);
 
 }
