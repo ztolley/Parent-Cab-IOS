@@ -27,13 +27,13 @@
 	
 	// delete any saved values for rate, distance
 	
-	[defaults removeObjectForKey:DISTANCEUNITKEY];
-	[defaults removeObjectForKey:RATEKEY];
+	[defaults removeObjectForKey:@"DistanceUnit"];
+	[defaults removeObjectForKey:@"PencePerMeter"];
 
 }
 
 - (void)tearDown {
-	settings = nil;
+	[settings reset];
     [super tearDown];
 }
 

@@ -19,14 +19,15 @@
 
 - (void)setUp {
     [super setUp];
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-	[defaults setFloat:0.20 forKey:RATEKEY];
-
+	Settings *settings = [Settings defaultSettings];
+	[settings setRate:0.20];
 }
 
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+	Settings *settings = [Settings defaultSettings];
+	[settings reset];
 }
 - (void)testCalculateDistance {
 	

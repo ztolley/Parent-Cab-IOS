@@ -19,34 +19,63 @@
 
 @implementation TripViewControllerTests
 {
-	TripViewController *tvc;
-	UILabel *distanceLabel;
-	UILabel *fareLabel;
+
 }
 - (void)setUp {
     [super setUp];
-	tvc = [[TripViewController alloc] init];
-	[tvc viewDidLoad];
-	distanceLabel = [[UILabel alloc] init];
-	fareLabel = [[UILabel alloc] init];
-	tvc.distanceLabel = distanceLabel;
-	tvc.fareLabel = fareLabel;
-	
-	self.originalLocale = tvc.settings.locale;
+
+
 }
 
 - (void)tearDown {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
-	tvc.settings.locale = self.originalLocale;
+	Settings *settings = [Settings defaultSettings];
+	[settings reset];
 	[super tearDown];
-
 }
 
-- (void)testDistanceChangesAreShownInKm {
-	[tvc tripRecorder:nil updatedDistance:1200];
-
-	NSString *actual = tvc.distanceLabel.text;
+- (void)testDistanceChangesAreShownInMilesByDefaultInUK {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
 	
+	UILabel *distanceLabel = [[UILabel alloc] init];
+	UILabel *fareLabel = [[UILabel alloc] init];
+	
+	TripViewController *tvc = [[TripViewController alloc] initWithSettings:settings];
+	tvc.distanceLabel = distanceLabel;
+	tvc.fareLabel = fareLabel;
+	
+	[tvc tripRecorder:nil updatedDistance:1600];
+	NSString *actual = tvc.distanceLabel.text;
+	XCTAssert([actual isEqualToString:@"0.99 miles"]);
+}
+- (void)testDistanceChangesAreShownInMilesByDefaultInUS {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
+	
+	UILabel *distanceLabel = [[UILabel alloc] init];
+	UILabel *fareLabel = [[UILabel alloc] init];
+	
+	TripViewController *tvc = [[TripViewController alloc] initWithSettings:settings];
+	tvc.distanceLabel = distanceLabel;
+	tvc.fareLabel = fareLabel;
+	
+	[tvc tripRecorder:nil updatedDistance:1600];
+	NSString *actual = tvc.distanceLabel.text;
+	XCTAssert([actual isEqualToString:@"0.99 miles"]);
+}
+- (void)testDistanceChangesAreShownInKmByDefaultInFrance {
+	Settings *settings = [Settings new];
+	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-FR"];
+	
+	UILabel *distanceLabel = [[UILabel alloc] init];
+	UILabel *fareLabel = [[UILabel alloc] init];
+	
+	TripViewController *tvc = [[TripViewController alloc] initWithSettings:settings];
+	tvc.distanceLabel = distanceLabel;
+	tvc.fareLabel = fareLabel;
+	
+	[tvc tripRecorder:nil updatedDistance:1200];
+	NSString *actual = tvc.distanceLabel.text;
 	XCTAssert([actual isEqualToString:@"1.20 km"]);
 }
 
@@ -54,6 +83,8 @@
 	
 	Settings *settings = [Settings new];
 	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-GB"];
+	
+	UILabel *fareLabel = [[UILabel alloc] init];
 	
 	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
 	[controller viewDidLoad];
@@ -68,7 +99,7 @@
 - (void)testShowCorrectCurrencyForUSUser {
 	Settings *settings = [Settings new];
 	settings.locale = [NSLocale localeWithLocaleIdentifier:@"en-US"];
-	
+	UILabel *fareLabel = [[UILabel alloc] init];
 	TripViewController *controller = [[TripViewController alloc] initWithSettings:settings];
 	[controller viewDidLoad];
 	controller.fareLabel = fareLabel;

@@ -23,6 +23,8 @@
 }
 
 - (void)tearDown {
+	Settings *settings = [Settings defaultSettings];
+	[settings reset];
     [super tearDown];
 }
 

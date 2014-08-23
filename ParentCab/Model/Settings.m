@@ -2,6 +2,8 @@
 
 NSString *const RATEKEY = @"PencePerMeter";
 NSString *const DISTANCEUNITKEY = @"DistanceUnit";
+NSString *const SETTINGSMILES = @"miles";
+NSString *const SETTINGSKM = @"km";
 
 @interface Settings ()
 {
@@ -63,15 +65,20 @@ NSString *const DISTANCEUNITKEY = @"DistanceUnit";
 	return distanceUnit;
 }
 
+- (void)reset {
+	[defaults removeObjectForKey:RATEKEY];
+	[defaults removeObjectForKey:DISTANCEUNITKEY];
+	_locale = [NSLocale currentLocale];
+}
 
 - (NSString *)distanceUnitForLocale {
 	
 	NSString *countryCode = [_locale objectForKey: NSLocaleCountryCode];
 	
 	if ([countryCode isEqualToString:@"GB"] || [countryCode isEqualToString:@"US"]) {
-		return @"miles";
+		return SETTINGSMILES;
 	} else {
-		return @"km";
+		return SETTINGSKM;
 	}
 	
 }

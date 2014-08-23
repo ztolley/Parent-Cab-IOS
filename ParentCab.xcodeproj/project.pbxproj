@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		781CB00419A22536009C90D9 /* MockCLGeocoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 781CB00319A22536009C90D9 /* MockCLGeocoder.m */; };
 		781CB00719A22742009C90D9 /* PCPlacemark.m in Sources */ = {isa = PBXBuildFile; fileRef = 781CB00619A22742009C90D9 /* PCPlacemark.m */; };
+		7839441819A886C0003F8220 /* DistanceUnitTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7839441719A886C0003F8220 /* DistanceUnitTableViewController.m */; };
 		785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */; };
 		7873D7DD199C0026001DF9B1 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7873D7DC199C0026001DF9B1 /* libOCMock.a */; };
 		787FA1D2197AAA24004B084E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA1D1197AAA24004B084E /* main.m */; };
@@ -68,6 +69,8 @@
 		781CB00319A22536009C90D9 /* MockCLGeocoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockCLGeocoder.m; sourceTree = "<group>"; };
 		781CB00519A22742009C90D9 /* PCPlacemark.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCPlacemark.h; sourceTree = "<group>"; };
 		781CB00619A22742009C90D9 /* PCPlacemark.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPlacemark.m; sourceTree = "<group>"; };
+		7839441619A886C0003F8220 /* DistanceUnitTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistanceUnitTableViewController.h; sourceTree = "<group>"; };
+		7839441719A886C0003F8220 /* DistanceUnitTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DistanceUnitTableViewController.m; sourceTree = "<group>"; };
 		785301FD199BE31200799BE2 /* TripRecorderServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripRecorderServiceTests.m; sourceTree = "<group>"; };
 		7873D7D2199BFFFB001DF9B1 /* NSNotificationCenter+OCMAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNotificationCenter+OCMAdditions.h"; sourceTree = "<group>"; };
 		7873D7D3199BFFFB001DF9B1 /* OCMArg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCMArg.h; sourceTree = "<group>"; };
@@ -294,6 +297,8 @@
 				787FA1FF197AAAB5004B084E /* TripViewController.m */,
 				78929744198AFDCB00581F81 /* SettingsViewController.h */,
 				78929745198AFDCB00581F81 /* SettingsViewController.m */,
+				7839441619A886C0003F8220 /* DistanceUnitTableViewController.h */,
+				7839441719A886C0003F8220 /* DistanceUnitTableViewController.m */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -472,6 +477,7 @@
 				787FA1D2197AAA24004B084E /* main.m in Sources */,
 				787FA21E197AAC72004B084E /* Journey.m in Sources */,
 				787FA218197AAB4E004B084E /* JourneyListCell.m in Sources */,
+				7839441819A886C0003F8220 /* DistanceUnitTableViewController.m in Sources */,
 				787FA20D197AAADE004B084E /* RouteOverlay.m in Sources */,
 				787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */,
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,

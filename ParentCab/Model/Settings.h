@@ -10,8 +10,10 @@
 - (void)setDistanceUnit:(NSString *)newDistance;
 - (NSString *)getDistanceUnit;
 
+- (void)reset;
+
 @property (strong, nonatomic)NSLocale *locale;
 
-extern NSString *const DISTANCEUNITKEY;
-extern NSString *const RATEKEY;
+extern NSString *const SETTINGSMILES;
+extern NSString *const SETTINGSKM;
 @end

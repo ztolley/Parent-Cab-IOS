@@ -11,9 +11,11 @@
 @interface SettingsViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UITextField *rateField;
+@property (strong, nonatomic) IBOutlet UILabel *unitField;
 
-- (IBAction)cancel:(id)sender;
-- (IBAction)done:(id)sender;
+- (IBAction)selectRate:(id)sender;
+- (IBAction)rateChanged:(id)sender;
+
 
 
 @end

@@ -16,16 +16,12 @@
 @interface TripRecordViewController ()
 {
 	RouteOverlay *overlay;
-	NSNumberFormatter *currencyNumberFormatter;
 	Settings *settings;
 }
 @end
 
 @implementation TripRecordViewController
 
-- (instancetype)init {
-	return [self initWithSettings:[Settings defaultSettings]];
-}
 - (instancetype)initWithSettings:(Settings *)initSettings
 {
 	self = [super init];
@@ -35,34 +31,43 @@
 	return self;
 }
 
-- (void)setupFormatter {
+- (NSNumberFormatter *)setupFormatter {
 	NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
 	[numberFormatter setLocale:settings.locale];
 	[numberFormatter setNumberStyle: NSNumberFormatterCurrencyStyle];
-	currencyNumberFormatter = numberFormatter;
+	return numberFormatter;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	[self setupFormatter];
 	overlay = [[RouteOverlay alloc] initWithMap:self.mapView];
+	if (settings == nil) {
+		settings = [Settings defaultSettings];
+	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-	
+
 	[super viewWillAppear:animated];
 	self.navigationController.navigationBarHidden = NO;
 	
 	NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
 	[formatter setDateFormat:@"d MMMM yyyy"];
+
 	NSDateFormatter *shortTimeFormatter = [[NSDateFormatter alloc] init];
 	[shortTimeFormatter setDateStyle: NSDateFormatterNoStyle];
 	[shortTimeFormatter setTimeStyle:NSDateFormatterShortStyle];
 
-	//double miles = self.journey.distance * 0.000621371192;
-	
-	self.fairLabel.text = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:self.journey.fare]];
-	self.distanceLabel.text = [NSString stringWithFormat:@"%.02f km", self.journey.distance];
+	NSString *distanceString;
+	if ([[settings getDistanceUnit] isEqualToString:SETTINGSMILES]) {
+		distanceString = [NSString stringWithFormat:@"%.2lf miles", (self.journey.distance * 0.000621371192)];
+	} else {
+		distanceString= [NSString stringWithFormat:@"%.2lf km", (self.journey.distance/1000)];
+	}
+
+	self.fairLabel.text = [[self setupFormatter] stringFromNumber:[NSNumber numberWithDouble:self.journey.fare]];
+	self.distanceLabel.text = distanceString;
 	self.startTimeLabel.text = [shortTimeFormatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
 	self.startDateLabel.text = [formatter stringFromDate:[NSDate dateWithTimeIntervalSince1970:self.journey.startTime]];
 	self.startStreetLabel.text = self.journey.startLocation.thoroughfare;
@@ -92,7 +97,7 @@
 
 }
 - (NSString *)generateEmailBodyForJourney:(Journey *)journey {
-	NSString *fare = [currencyNumberFormatter stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
+	NSString *fare = [[self setupFormatter] stringFromNumber:[NSNumber numberWithDouble:journey.fare]];
 	
 	NSString *result = [NSString stringWithFormat:@"Fare: %@\nStart: %@,%@\nEnd: %@,%@",
 						fare,

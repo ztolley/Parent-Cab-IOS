@@ -13,15 +13,11 @@
 
 @implementation TripViewController
 
-- (instancetype)init {
-	return [self initWithSettings:[Settings defaultSettings]];
-}
 - (instancetype)initWithSettings:(Settings *)initSettings
 {
 	self = [super init];
 	if (self) {
 		settings = initSettings;
-
 	}
 	return self;
 }
@@ -36,6 +32,10 @@
     [super viewDidLoad];
 	[self setupFormatter];
 	
+	if (settings == nil) {
+		settings = [Settings defaultSettings];
+	}
+	
 	// Hide all the buttons until we know we have access to the users location
 	[self showNoButtons];
 	
@@ -47,9 +47,7 @@
 	[locationManager requestWhenInUseAuthorization];
 	
 	self.tripRecorder = [[TripRecorderService alloc] init];
-	
-	[self tripRecorder:nil updatedDistance:0.00];
-	[self tripRecorder:nil updatedFare:0.00];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +56,17 @@
 	[self setTripRecorder:nil];
 }
 
-
+- (void)viewWillAppear:(BOOL)animated
+{
+	[super viewWillAppear:animated];
+	if (self.tripRecorder.currentJourney != nil) {
+		[self tripRecorder:self.tripRecorder updatedDistance:self.tripRecorder.currentJourney.distance];
+		[self tripRecorder:self.tripRecorder updatedFare:self.tripRecorder.currentJourney.fare];
+	} else {
+		[self tripRecorder:nil updatedDistance:0.00];
+		[self tripRecorder:nil updatedFare:0.00];
+	}
+}
 #pragma mark - Mapview
 - (void)mapView:(MKMapView *)mv didUpdateUserLocation:(MKUserLocation *)userLocation {
 	@try {
@@ -82,12 +90,17 @@
 	_tripRecorder.delegate = self;
 }
 - (void)tripRecorder: (TripRecorderService *)tripRecorder updatedDistance: (double)distance {
-
-	//double miles = distance * 0.000621371192;
+	NSString *unit = [settings getDistanceUnit];
 	
-	// turn it into an Integer for output.
-	NSString *myString = [NSString stringWithFormat:@"%.2lf km", (distance/1000)];
-	[[self distanceLabel] setText: myString];
+	NSString *distanceString;
+	
+	if ([unit isEqualToString:SETTINGSMILES]) {
+		distanceString = [NSString stringWithFormat:@"%.2lf miles", (distance * 0.000621371192)];
+	} else {
+		distanceString= [NSString stringWithFormat:@"%.2lf km", (distance/1000)];
+	}
+	
+	[[self distanceLabel] setText: distanceString];
 }
 - (void)tripRecorder:(TripRecorderService *)tripRecorder updatedFare:(double)fare {
 	

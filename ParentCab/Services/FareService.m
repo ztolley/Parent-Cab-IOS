@@ -28,18 +28,17 @@
 }
 
 - (double)fareForDistance:(double)distance {
-	NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+	Settings *settings = [Settings defaultSettings];
 	
-	double pricePerkm = [defaults floatForKey:RATEKEY];
+	
+	float pricePerkm = [settings getRate];
 	
 	return [self rounded:(distance/1000)] * pricePerkm;
 }
 
 - (double)rounded:(double)amount {
-	
 	NSString *string = [NSString stringWithFormat:@"%.2f", amount];
 	return [string doubleValue];
-	
 }
 
 
