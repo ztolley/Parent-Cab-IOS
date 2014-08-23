@@ -67,8 +67,9 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="il0-Mm-KXY">
-                                        <rect key="frame" x="0.0" y="0.0" width="96" height="82"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="82"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Reset">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -78,8 +79,9 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-GV-7Ft">
-                                        <rect key="frame" x="224" y="0.0" width="96" height="82"/>
+                                        <rect key="frame" x="218" y="0.0" width="102" height="82"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Finish">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -89,11 +91,12 @@
                                         </connections>
                                     </button>
                                     <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Fl-b9-YVo">
-                                        <rect key="frame" x="112" y="0.0" width="96" height="82"/>
+                                        <rect key="frame" x="109" y="0.0" width="102" height="82"/>
                                         <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="82" id="akt-ym-aEB"/>
                                         </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Resume">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -105,7 +108,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="0Fl-b9-YVo" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.3" id="02R-DS-VJc"/>
+                                    <constraint firstItem="0Fl-b9-YVo" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="02R-DS-VJc"/>
                                     <constraint firstItem="il0-Mm-KXY" firstAttribute="leading" secondItem="7ut-Gn-82r" secondAttribute="leading" id="1i6-RC-cFM"/>
                                     <constraint firstItem="ftN-Ns-zgl" firstAttribute="leading" secondItem="7ut-Gn-82r" secondAttribute="leading" constant="38" id="796-ZT-XPc"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" id="8f5-tx-yzr"/>
@@ -116,9 +119,9 @@
                                     <constraint firstAttribute="centerX" secondItem="MGo-9s-pTq" secondAttribute="centerX" id="EJN-oA-kxc"/>
                                     <constraint firstAttribute="height" secondItem="0Fl-b9-YVo" secondAttribute="height" id="FD6-lD-d4s"/>
                                     <constraint firstAttribute="centerY" secondItem="ftN-Ns-zgl" secondAttribute="centerY" constant="1" id="L4j-eh-Day"/>
-                                    <constraint firstItem="il0-Mm-KXY" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.3" id="LX7-4l-XYA"/>
+                                    <constraint firstItem="il0-Mm-KXY" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="LX7-4l-XYA"/>
                                     <constraint firstAttribute="centerX" secondItem="0Fl-b9-YVo" secondAttribute="centerX" id="LfG-0t-5GP"/>
-                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.3" id="VRy-OI-vIm"/>
+                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="VRy-OI-vIm"/>
                                     <constraint firstAttribute="height" secondItem="il0-Mm-KXY" secondAttribute="height" id="Wf5-zJ-CKW"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="top" secondItem="7ut-Gn-82r" secondAttribute="top" id="YWP-i6-HVX"/>
                                     <constraint firstItem="0Fl-b9-YVo" firstAttribute="top" secondItem="MGo-9s-pTq" secondAttribute="top" id="aJ0-I6-F5e"/>
@@ -748,6 +751,6 @@
         </simulatedScreenMetrics>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="job-Rp-647"/>
+        <segue reference="vmG-tZ-YXb"/>
     </inferredMetricsTieBreakers>
 </document>
