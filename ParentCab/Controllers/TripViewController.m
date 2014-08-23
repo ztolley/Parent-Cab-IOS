@@ -211,6 +211,9 @@
 
 		[self.tripRecorder finish:^(Journey *journey) {
 			[self performSegueWithIdentifier:@"TRIPREVIEW" sender:journey];
+			[self showStart];
+			[self tripRecorder:nil updatedDistance:0.00];
+			[self tripRecorder:nil updatedFare:0.00];
 		}];
 	} else {
 		[self.tripRecorder reset];
