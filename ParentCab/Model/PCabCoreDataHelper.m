@@ -26,7 +26,9 @@
 	return location;
 }
 - (void)deleteJourney:(Journey *)journey {
-	[self.context deleteObject:journey];
+	if (journey != nil) {
+		[self.context deleteObject:journey];
+	}
 }
 
 
