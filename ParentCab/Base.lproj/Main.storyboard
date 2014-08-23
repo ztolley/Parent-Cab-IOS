@@ -178,7 +178,7 @@
                     <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <navigationItem key="navigationItem" title="Trip Recorder" id="YEN-Tf-Atg">
                         <barButtonItem key="backBarButtonItem" title="Back" id="xr0-Rf-03b"/>
-                        <barButtonItem key="leftBarButtonItem" image="Gears" style="plain" id="UfD-CD-L83" userLabel="Settings Button">
+                        <barButtonItem key="leftBarButtonItem" image="Gears" id="UfD-CD-L83" userLabel="Settings Button">
                             <connections>
                                 <segue destination="X8D-er-B7f" kind="push" id="3tP-5v-c29"/>
                             </connections>
@@ -678,14 +678,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Route" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yG-1A-TDq">
-                                            <rect key="frame" x="107" y="51" width="473" height="29"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3yG-1A-TDq">
+                                            <rect key="frame" x="107" y="51" width="193" height="29"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
-                                            <rect key="frame" x="0.0" y="0.0" width="99" height="83"/>
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
+                                            <rect key="frame" x="0.0" y="1" width="99" height="83"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="99" id="QUd-KV-HGM"/>
                                             </constraints>
@@ -725,7 +725,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Journeys" id="rKa-yA-Bdh">
-                        <barButtonItem key="backBarButtonItem" title="Back" style="plain" id="YtH-h7-Bb3">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="YtH-h7-Bb3">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
