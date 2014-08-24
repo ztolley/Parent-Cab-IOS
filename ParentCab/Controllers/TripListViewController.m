@@ -6,7 +6,7 @@
 #import "PCabCoreDataHelper.h"
 
 @implementation TripListViewController
-#define debug 1
+#define debug 0
 
 #pragma mark - Data
 - (void)configureFetch {

@@ -44,7 +44,10 @@
 	locationManager.delegate = self;
 	self.map.delegate = self;
 	
-	[locationManager requestWhenInUseAuthorization];
+	//[locationManager requestWhenInUseAuthorization];
+	self.map.showsUserLocation = YES;
+	[self showStart];
+	
 	
 	self.tripRecorder = [[TripRecorderService alloc] init];
 
@@ -183,10 +186,10 @@
 
 #pragma mark - Location
 - (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
-	if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
-		self.map.showsUserLocation = YES;
-		[self showStart];
-	}
+	//if (status == kCLAuthorizationStatusAuthorizedWhenInUse) {
+	//	self.map.showsUserLocation = YES;
+	//	[self showStart];
+	//}
 }
 
 #pragma mark - Done

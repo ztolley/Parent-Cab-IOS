@@ -15,7 +15,7 @@
 @end
 
 @implementation AppDelegate
-#define debug 1
+#define debug 0
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
