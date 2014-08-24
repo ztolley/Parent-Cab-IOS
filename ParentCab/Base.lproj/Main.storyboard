@@ -43,7 +43,7 @@
                             <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tII-Vw-gnf">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                             </mapView>
-                            <view alpha="0.75" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7ut-Gn-82r" userLabel="Bottom Button Panel">
+                            <view alpha="0.75" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7ut-Gn-82r" userLabel="Bottom Button Panel">
                                 <rect key="frame" x="0.0" y="422" width="320" height="82"/>
                                 <subviews>
                                     <slider hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftN-Ns-zgl">
@@ -55,8 +55,8 @@
                                             <action selector="sliderTouchUpInside:" destination="YAf-a6-vpV" eventType="valueChanged" id="hp5-Y0-J3G"/>
                                         </connections>
                                     </slider>
-                                    <button contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGo-9s-pTq">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
+                                    <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MGo-9s-pTq">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="83"/>
                                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="0.25098040700000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                                         <state key="normal" title="Start">
@@ -66,8 +66,8 @@
                                             <action selector="start:" destination="YAf-a6-vpV" eventType="touchUpInside" id="Fxl-CN-Ku9"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="il0-Mm-KXY">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="82"/>
+                                    <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="il0-Mm-KXY">
+                                        <rect key="frame" x="0.0" y="0.0" width="102" height="83"/>
                                         <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Reset">
@@ -78,8 +78,8 @@
                                             <action selector="reset:" destination="YAf-a6-vpV" eventType="touchUpInside" id="m7i-An-M4q"/>
                                         </connections>
                                     </button>
-                                    <button hidden="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-GV-7Ft">
-                                        <rect key="frame" x="218" y="0.0" width="102" height="82"/>
+                                    <button hidden="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5J9-GV-7Ft">
+                                        <rect key="frame" x="218" y="0.0" width="102" height="83"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                         <state key="normal" title="Finish">
@@ -111,10 +111,10 @@
                                     <constraint firstItem="0Fl-b9-YVo" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="02R-DS-VJc"/>
                                     <constraint firstItem="il0-Mm-KXY" firstAttribute="leading" secondItem="7ut-Gn-82r" secondAttribute="leading" id="1i6-RC-cFM"/>
                                     <constraint firstItem="ftN-Ns-zgl" firstAttribute="leading" secondItem="7ut-Gn-82r" secondAttribute="leading" constant="38" id="796-ZT-XPc"/>
-                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" id="8f5-tx-yzr"/>
+                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" constant="1" id="8f5-tx-yzr"/>
                                     <constraint firstAttribute="trailing" secondItem="ftN-Ns-zgl" secondAttribute="trailing" constant="37" id="ANt-D4-7uj"/>
                                     <constraint firstAttribute="height" secondItem="MGo-9s-pTq" secondAttribute="height" id="B5u-IF-L8a"/>
-                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" id="CPG-pj-kum"/>
+                                    <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" constant="1" id="CPG-pj-kum"/>
                                     <constraint firstItem="MGo-9s-pTq" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" id="D9E-yW-ji2"/>
                                     <constraint firstAttribute="centerX" secondItem="MGo-9s-pTq" secondAttribute="centerX" id="EJN-oA-kxc"/>
                                     <constraint firstAttribute="height" secondItem="0Fl-b9-YVo" secondAttribute="height" id="FD6-lD-d4s"/>
@@ -699,7 +699,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
+                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
                                             <rect key="frame" x="0.0" y="0.0" width="99" height="83"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="99" id="QUd-KV-HGM"/>
@@ -720,10 +720,10 @@
                                         <constraint firstAttribute="trailing" secondItem="3yG-1A-TDq" secondAttribute="trailing" constant="20" symbolic="YES" id="h2j-NR-fMy"/>
                                         <constraint firstItem="hXG-d7-gbq" firstAttribute="leading" secondItem="h87-kx-dWS" secondAttribute="trailing" constant="8" symbolic="YES" id="iG1-w9-VcX"/>
                                         <constraint firstItem="h87-kx-dWS" firstAttribute="leading" secondItem="VHB-fl-8zg" secondAttribute="leading" id="lwJ-rP-x7d"/>
-                                        <constraint firstAttribute="bottom" secondItem="h87-kx-dWS" secondAttribute="bottom" constant="-1" id="m6t-nJ-r7b"/>
+                                        <constraint firstAttribute="bottom" secondItem="h87-kx-dWS" secondAttribute="bottom" id="m6t-nJ-r7b"/>
                                         <constraint firstItem="3yG-1A-TDq" firstAttribute="leading" secondItem="h87-kx-dWS" secondAttribute="trailing" constant="8" symbolic="YES" id="qKR-aI-e58"/>
                                         <constraint firstItem="hXG-d7-gbq" firstAttribute="top" secondItem="VHB-fl-8zg" secondAttribute="top" constant="9" id="tNM-OV-pPz"/>
-                                        <constraint firstItem="h87-kx-dWS" firstAttribute="top" secondItem="VHB-fl-8zg" secondAttribute="top" constant="1" id="z3r-OM-N5h"/>
+                                        <constraint firstItem="h87-kx-dWS" firstAttribute="top" secondItem="VHB-fl-8zg" secondAttribute="top" id="z3r-OM-N5h"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
