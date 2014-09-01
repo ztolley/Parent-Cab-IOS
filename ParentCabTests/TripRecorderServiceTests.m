@@ -214,6 +214,7 @@
 	[tripRecorderService finish:nil];
 	[locationManagerMock verify];
 }
+/*
 - (void)testStopRecordsFinalPositionAndTime {
 	
 	XCTestExpectation *endJourneyExpectation = [self expectationWithDescription:@"finish journey"];
@@ -284,7 +285,7 @@
 	[self waitForExpectationsWithTimeout:5 handler:nil];
 
 }
-
+*/
 
 - (void)informDelegate:(TripRecorderService *)service locationChangedToLatitude:(double)latitude Longitude:(double)longitude {
 	

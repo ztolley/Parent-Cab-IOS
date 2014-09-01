@@ -1,20 +1,17 @@
 //
-//  Step.m
+//  StartLocation.m
 //  ParentCab
 //
 //  Created by Zac Tolley on 01/09/2014.
 //  Copyright (c) 2014 Zac Tolley. All rights reserved.
 //
 
-#import "Step.h"
+#import "StartLocation.h"
 #import "Journey.h"
-#import "StepLocation.h"
 
 
-@implementation Step
+@implementation StartLocation
 
-@dynamic timestamp;
 @dynamic journey;
-@dynamic location;
 
 @end

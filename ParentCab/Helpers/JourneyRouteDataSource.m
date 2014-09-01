@@ -10,6 +10,7 @@
 #import "Journey.h"
 #import "Step.h"
 #import "Location.h"
+#import "StepLocation.h"
 
 
 @implementation JourneyRouteDataSource

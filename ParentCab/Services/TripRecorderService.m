@@ -30,7 +30,7 @@
 		_locationManager.delegate = self;
 		_locationManager.distanceFilter = 50; // Maybe make this 100m later, that way it ties in with the 100m accuracy
 		_locationManager.pausesLocationUpdatesAutomatically = YES;
-
+		
 		UIDevice *device = UIDevice.currentDevice;
 		// Get notifications about power state (charging or using battery)
 		[device setBatteryMonitoringEnabled:YES];
@@ -43,11 +43,11 @@
 		recording = NO;
 		
 		_geocoder = [[CLGeocoder alloc] init];
-	
+		
 		_cdh = [(AppDelegate *)[[UIApplication sharedApplication] delegate] cdh];
 		_fareService = [[FareService alloc] init];
 	}
-
+	
 	return self;
 }
 
@@ -58,7 +58,7 @@
 
 - (void)setInitialLocation:(CLLocation*)location {
 	
-	Location *startLocation = [_cdh getNewLocation];
+	StartLocation *startLocation = [_cdh getNewStartLocation];
 	startLocation.latitude = location.coordinate.latitude;
 	startLocation.longitude = location.coordinate.longitude;
 	
@@ -83,11 +83,12 @@
 
 - (void)addLocation:(CLLocation *)location {
 	Step *newStep = [_cdh getNewStep];
-	Location *stepLocation = [_cdh getNewLocation];
+	StepLocation *stepLocation = [_cdh getNewStepLocation];
 	newStep.location = stepLocation;
 	newStep.location.latitude = location.coordinate.latitude;
 	newStep.location.longitude = location.coordinate.longitude;
 	newStep.timestamp = [[NSDate date] timeIntervalSince1970];
+	newStep.journey = self.currentJourney;
 	
 	[self.currentJourney addStepsObject:newStep];
 }
@@ -122,7 +123,7 @@
 	
 	[_delegate tripRecorder:self updatedDistance: self.currentJourney.distance];
 	[_delegate tripRecorder:self updatedFare: self.currentJourney.fare];
-
+	
 }
 - (void)locationManagerDidPauseLocationUpdates:(CLLocationManager *)manager {
 	UILocalNotification *notification = [[UILocalNotification alloc] init];
@@ -133,7 +134,7 @@
 	
 }
 - (void)locationManagerDidResumeLocationUpdates:(CLLocationManager *)manager {
-
+	
 }
 
 
@@ -156,7 +157,7 @@
 	}
 	
 	if (self.currentJourney) {
-		Location *endLocation = [_cdh getNewLocation];
+		EndLocation *endLocation = [_cdh getNewEndLocation];
 		endLocation.latitude = previousLocation.coordinate.latitude;
 		endLocation.longitude = previousLocation.coordinate.longitude;
 		
@@ -184,7 +185,7 @@
 	[_geocoder reverseGeocodeLocation:previousLocation completionHandler:^(NSArray *placemarks, NSError *error) {
 		
 		Journey *journey = self.currentJourney;
-
+		
 		self.currentJourney = nil;
 		previousLocation = nil;
 		
@@ -203,7 +204,7 @@
 			journeyBlock(journey);
 		}
 	}];
-
+	
 }
 - (void)reset {
 	
@@ -215,10 +216,10 @@
 	[self.cdh deleteJourney:self.currentJourney];
 	self.currentJourney = nil;
 	previousLocation = nil;
-
+	
 	[_delegate tripRecorder:self updatedDistance:0.00];
 	[_delegate tripRecorder:self updatedFare:0.00];
-
+	
 }
 
 
