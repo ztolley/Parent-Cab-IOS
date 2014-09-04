@@ -9,7 +9,7 @@
 #import "CoreDataHelper.h"
 
 @implementation CoreDataHelper
-#define debug 0
+#define debug 1
 
 #pragma mark - FILES
 NSString *storeFilename = @"parentcab.sqlite";
@@ -83,6 +83,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
     [_context setParentContext:_parentContext];
     [_context setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
 	
+	[self listenForStoreChanges];
 	
 	return self;
 }
@@ -230,28 +231,24 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
 	
 }
 - (void)listenForStoreChanges {
-	
-	if (debug==1) {
-		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-	}
-	
-	NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
-	[dc addObserver:self
-		   selector:@selector(storesWillChange:)
-			   name:NSPersistentStoreCoordinatorStoresWillChangeNotification
-			 object:_coordinator];
-	
-	[dc addObserver:self
-		   selector:@selector(storesDidChange:)
-			   name: NSPersistentStoreCoordinatorStoresDidChangeNotification
-			 object:_coordinator];
-	
-	[dc addObserver:self
-		   selector:@selector(persistentStoreDidImportUbiquitousContentChange:)
-			   name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
-			 object:_coordinator];
-	
-	
+    if (debug==1) {
+        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
+    }
+    NSNotificationCenter *dc = [NSNotificationCenter defaultCenter];
+    [dc addObserver:self
+           selector:@selector(storesWillChange:)
+               name:NSPersistentStoreCoordinatorStoresWillChangeNotification
+             object:_coordinator];
+    
+    [dc addObserver:self
+           selector:@selector(storesDidChange:)
+               name:NSPersistentStoreCoordinatorStoresDidChangeNotification
+             object:_coordinator];
+    
+    [dc addObserver:self
+           selector:@selector(persistentStoreDidImportUbiquitiousContentChanges:)
+               name:NSPersistentStoreDidImportUbiquitousContentChangesNotification
+             object:_coordinator];
 }
 
 - (void)storesWillChange:(NSNotification *)n {
@@ -285,7 +282,7 @@ NSString *iCloudStoreFilename = @"iCloud.sqlite";
 													  userInfo:nil];
 	
 }
-- (void)persistentStoreDidImportUbiquitousContentChange:(NSNotification *)n {
+- (void)persistentStoreDidImportUbiquitiousContentChanges:(NSNotification *)n {
 	
 	if (debug==1) {
 		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));

@@ -446,6 +446,9 @@
 							com.apple.iCloud = {
 								enabled = 1;
 							};
+							com.apple.iOS = {
+								enabled = 1;
+							};
 						};
 					};
 					787FA1E4197AAA24004B084E = {
@@ -659,7 +662,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParentCab/ParentCab.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -678,7 +681,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParentCab/ParentCab.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
