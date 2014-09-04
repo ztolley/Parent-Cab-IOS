@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5064" systemVersion="13E28" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="EndLocation" representedClassName="EndLocation" parentEntity="Location" syncable="YES">
+        <relationship name="journey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="endLocation" inverseEntity="Journey" syncable="YES"/>
+    </entity>
+    <entity name="Journey" representedClassName="Journey" syncable="YES">
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="endTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fare" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="endLocation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="EndLocation" inverseName="journey" inverseEntity="EndLocation" syncable="YES"/>
+        <relationship name="startLocation" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StartLocation" inverseName="journey" inverseEntity="StartLocation" syncable="YES"/>
+        <relationship name="steps" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Step" inverseName="journey" inverseEntity="Step" syncable="YES"/>
+    </entity>
+    <entity name="Location" representedClassName="Location" isAbstract="YES" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="postcode" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="thoroughfare" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="StartLocation" representedClassName="StartLocation" parentEntity="Location" syncable="YES">
+        <relationship name="journey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="startLocation" inverseEntity="Journey" syncable="YES"/>
+    </entity>
+    <entity name="Step" representedClassName="Step" syncable="YES">
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="journey" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Journey" inverseName="steps" inverseEntity="Journey" syncable="YES"/>
+        <relationship name="location" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="StepLocation" inverseName="step" inverseEntity="StepLocation" syncable="YES"/>
+    </entity>
+    <entity name="StepLocation" representedClassName="StepLocation" parentEntity="Location" syncable="YES">
+        <relationship name="step" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Step" inverseName="location" inverseEntity="Step" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Journey" positionX="-63" positionY="-18" width="128" height="148"/>
+        <element name="Location" positionX="736" positionY="-103" width="128" height="103"/>
+        <element name="Step" positionX="243" positionY="38" width="128" height="88"/>
+        <element name="StepLocation" positionX="457" positionY="14" width="128" height="58"/>
+        <element name="EndLocation" positionX="279" positionY="-144" width="128" height="58"/>
+        <element name="StartLocation" positionX="259" positionY="-247" width="128" height="58"/>
+    </elements>
+</model>

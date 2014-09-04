@@ -21,8 +21,16 @@
 	Step *step = [NSEntityDescription insertNewObjectForEntityForName:@"Step" inManagedObjectContext:self.context];
 	return step;
 }
-- (Location *)getNewLocation {
-	Location *location = [NSEntityDescription insertNewObjectForEntityForName:@"Location" inManagedObjectContext:self.context];
+- (StartLocation *)getNewStartLocation {
+	StartLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"StartLocation" inManagedObjectContext:self.context];
+	return location;
+}
+- (EndLocation *)getNewEndLocation {
+	EndLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"EndLocation" inManagedObjectContext:self.context];
+	return location;
+}
+- (StepLocation *)getNewStepLocation {
+	StepLocation *location = [NSEntityDescription insertNewObjectForEntityForName:@"StepLocation" inManagedObjectContext:self.context];
 	return location;
 }
 - (void)deleteJourney:(Journey *)journey {

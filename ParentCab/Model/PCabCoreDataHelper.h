@@ -10,14 +10,18 @@
 
 @class Journey;
 @class Step;
-@class Location;
+@class StartLocation;
+@class EndLocation;
+@class StepLocation;
 
 
 @interface PCabCoreDataHelper : CoreDataHelper
 
 - (Journey *)getNewJourney;
 - (Step *)getNewStep;
-- (Location *)getNewLocation;
+- (StartLocation *)getNewStartLocation;
+- (EndLocation *)getNewEndLocation;
+- (StepLocation *)getNewStepLocation;
 - (void)deleteJourney:(Journey *)journey;
 
 @end

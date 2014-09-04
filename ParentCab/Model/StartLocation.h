@@ -1,5 +1,5 @@
 //
-//  Step.h
+//  StartLocation.h
 //  ParentCab
 //
 //  Created by Zac Tolley on 01/09/2014.
@@ -8,13 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Location.h"
 
-@class Journey, StepLocation;
+@class Journey;
 
-@interface Step : NSManagedObject
+@interface StartLocation : Location
 
-@property (nonatomic) NSTimeInterval timestamp;
 @property (nonatomic, retain) Journey *journey;
-@property (nonatomic, retain) StepLocation *location;
 
 @end

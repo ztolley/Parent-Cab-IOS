@@ -69,17 +69,36 @@ NSString *storeFilename = @"parentcab.sqlite";
 	return self;
 }
 - (void)loadStore {
+	
 	if (debug==1) {
 		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
 	}
-	if (_store) {return;} // Don’t load store if it's already loaded
+	
+	// Don’t load store if it's already loaded
+	if (_store) {
+		return;
+	}
+	
+	NSDictionary *options = @{
+							  NSMigratePersistentStoresAutomaticallyOption: @YES,
+							  NSInferMappingModelAutomaticallyOption: @YES
+							  };
+	
 	NSError *error = nil;
 	_store = [_coordinator addPersistentStoreWithType:NSSQLiteStoreType
 										configuration:nil
 												  URL:[self storeURL]
-											  options:nil error:&error];
-	if (!_store) {NSLog(@"Failed to add store. Error: %@", error);abort();}
-	else         {if (debug==1) {NSLog(@"Successfully added store: %@", _store);}}
+											  options:options
+												error:&error];
+	
+	if (!_store) {
+		NSLog(@"Failed to add store. Error: %@", error);
+		abort();
+	} else {
+		if (debug==1) {
+			NSLog(@"Successfully added store: %@", _store);
+		}
+	}
 }
 - (void)setupCoreData {
 	if (debug==1) {

@@ -1,3 +1,6 @@
 #import "Journey.h"
 #import "Location.h"
 #import "Step.h"
+#import "StartLocation.h"
+#import "EndLocation.h"
+#import "StepLocation.h"

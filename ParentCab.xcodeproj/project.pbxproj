@@ -51,6 +51,12 @@
 		78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
+		78D6B2E919B5013D00664C34 /* EndLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E419B5013D00664C34 /* EndLocation.m */; };
+		78D6B2EA19B5013D00664C34 /* StartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E619B5013D00664C34 /* StartLocation.m */; };
+		78D6B2EB19B5013D00664C34 /* StepLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E819B5013D00664C34 /* StepLocation.m */; };
+		78D6B2EC19B512D500664C34 /* EndLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E419B5013D00664C34 /* EndLocation.m */; };
+		78D6B2ED19B512DA00664C34 /* StartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E619B5013D00664C34 /* StartLocation.m */; };
+		78D6B2EE19B512DE00664C34 /* StepLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E819B5013D00664C34 /* StepLocation.m */; };
 		78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +143,13 @@
 		78B178B219812F6500380B71 /* PCabCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCabCoreDataHelper.m; sourceTree = "<group>"; };
 		78D51B6B197D443600710E1C /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
 		78D51B6C197D443600710E1C /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ParentCab 2.xcdatamodel"; sourceTree = "<group>"; };
+		78D6B2E319B5013D00664C34 /* EndLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndLocation.h; sourceTree = "<group>"; };
+		78D6B2E419B5013D00664C34 /* EndLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndLocation.m; sourceTree = "<group>"; };
+		78D6B2E519B5013D00664C34 /* StartLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StartLocation.h; sourceTree = "<group>"; };
+		78D6B2E619B5013D00664C34 /* StartLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StartLocation.m; sourceTree = "<group>"; };
+		78D6B2E719B5013D00664C34 /* StepLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StepLocation.h; sourceTree = "<group>"; };
+		78D6B2E819B5013D00664C34 /* StepLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StepLocation.m; sourceTree = "<group>"; };
 		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../CoreDataHelper.h; sourceTree = "<group>"; };
 		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../CoreDataHelper.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -313,6 +326,12 @@
 				787FA221197AAC73004B084E /* Step.m */,
 				787FA21C197AAC72004B084E /* Journey.h */,
 				787FA21D197AAC72004B084E /* Journey.m */,
+				78D6B2E319B5013D00664C34 /* EndLocation.h */,
+				78D6B2E419B5013D00664C34 /* EndLocation.m */,
+				78D6B2E519B5013D00664C34 /* StartLocation.h */,
+				78D6B2E619B5013D00664C34 /* StartLocation.m */,
+				78D6B2E719B5013D00664C34 /* StepLocation.h */,
+				78D6B2E819B5013D00664C34 /* StepLocation.m */,
 				787FA228197AAC84004B084E /* model.h */,
 				78B178AD1981145600380B71 /* CoreDataTVC.h */,
 				78B178AE1981145600380B71 /* CoreDataTVC.m */,
@@ -479,6 +498,7 @@
 				787FA218197AAB4E004B084E /* JourneyListCell.m in Sources */,
 				7839441819A886C0003F8220 /* DistanceUnitTableViewController.m in Sources */,
 				787FA20D197AAADE004B084E /* RouteOverlay.m in Sources */,
+				78D6B2EB19B5013D00664C34 /* StepLocation.m in Sources */,
 				787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */,
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,
 				78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */,
@@ -486,7 +506,9 @@
 				78AF9B47199D204500D4DAD6 /* FareService.m in Sources */,
 				78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */,
+				78D6B2E919B5013D00664C34 /* EndLocation.m in Sources */,
 				787FA204197AAAC1004B084E /* TripListViewController.m in Sources */,
+				78D6B2EA19B5013D00664C34 /* StartLocation.m in Sources */,
 				787FA200197AAAB5004B084E /* TripRecordViewController.m in Sources */,
 				787FA1FB197AAA9B004B084E /* GoogleMapsImage.m in Sources */,
 				787FA226197AAC73004B084E /* Location.m in Sources */,
@@ -503,6 +525,7 @@
 				781CB00419A22536009C90D9 /* MockCLGeocoder.m in Sources */,
 				78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				787FA21F197AAC72004B084E /* Journey.m in Sources */,
+				78D6B2ED19B512DA00664C34 /* StartLocation.m in Sources */,
 				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78AF9B4C199D5E6200D4DAD6 /* TripViewControllerTests.m in Sources */,
 				7885A47019A7CB780045330F /* TripRecordViewControllerTests.m in Sources */,
@@ -510,12 +533,14 @@
 				789F6E8419A29E070092B555 /* Settings.m in Sources */,
 				787FA227197AAC73004B084E /* Location.m in Sources */,
 				781CB00719A22742009C90D9 /* PCPlacemark.m in Sources */,
+				78D6B2EC19B512D500664C34 /* EndLocation.m in Sources */,
 				78AF9B4A199D3FA700D4DAD6 /* FareServiceTests.m in Sources */,
 				78AF9B48199D204500D4DAD6 /* FareService.m in Sources */,
 				78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */,
 				7885A46E19A7AD9F0045330F /* JourneyListCellTests.m in Sources */,
 				785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */,
 				78B178B01981145600380B71 /* CoreDataTVC.m in Sources */,
+				78D6B2EE19B512DE00664C34 /* StepLocation.m in Sources */,
 				789F6E8619A29E850092B555 /* SettingsTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -760,9 +785,10 @@
 		787FA1D6197AAA24004B084E /* ParentCab.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */,
 				787FA1D7197AAA24004B084E /* ParentCab.xcdatamodel */,
 			);
-			currentVersion = 787FA1D7197AAA24004B084E /* ParentCab.xcdatamodel */;
+			currentVersion = 78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */;
 			name = ParentCab.xcdatamodeld;
 			path = ../ParentCab.xcdatamodeld;
 			sourceTree = "<group>";
