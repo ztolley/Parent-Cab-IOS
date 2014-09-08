@@ -114,7 +114,8 @@
 	
 	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.1874988592864875];
 	
-	Step *firstStep = [tripRecorderService.currentJourney.steps objectAtIndex:0];
+	NSArray *steps = [tripRecorderService.currentJourney.steps allObjects];
+	Step *firstStep = [steps objectAtIndex:0];
 	
 	XCTAssertTrue(firstStep.location.latitude  == 41.44994138650804,		@"Correct latitude");
 	XCTAssertTrue(firstStep.location.longitude == -1.1874988592864875,		@"Correct longitude");
@@ -127,7 +128,10 @@
 	[self informDelegate:tripRecorderService locationChangedToLatitude:41.44994138650804 Longitude:-1.187498859286487];
 	[self informDelegate:tripRecorderService locationChangedToLatitude:42.44994138650804 Longitude:-2.187498859286487];
 	
-	NSOrderedSet *steps = tripRecorderService.currentJourney.steps;
+	
+	NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
+	NSArray *steps = [tripRecorderService.currentJourney.steps sortedArrayUsingDescriptors:@[sortDescriptor]];
+	
 	XCTAssertTrue(steps.count == 2, @"There are 2 steps recorded");
 	
 	Step *secondStep = [steps objectAtIndex:1];

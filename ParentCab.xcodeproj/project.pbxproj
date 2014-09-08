@@ -29,8 +29,6 @@
 		787FA214197AAB31004B084E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 787FA213197AAB31004B084E /* CoreLocation.framework */; };
 		787FA218197AAB4E004B084E /* JourneyListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA217197AAB4E004B084E /* JourneyListCell.m */; };
 		787FA21B197AAB68004B084E /* EDSunriseSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA21A197AAB68004B084E /* EDSunriseSet.m */; };
-		787FA21E197AAC72004B084E /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA21D197AAC72004B084E /* Journey.m */; };
-		787FA21F197AAC72004B084E /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA21D197AAC72004B084E /* Journey.m */; };
 		787FA222197AAC73004B084E /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA221197AAC73004B084E /* Step.m */; };
 		787FA223197AAC73004B084E /* Step.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA221197AAC73004B084E /* Step.m */; };
 		787FA226197AAC73004B084E /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = 787FA225197AAC73004B084E /* Location.m */; };
@@ -58,6 +56,8 @@
 		78D6B2ED19B512DA00664C34 /* StartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E619B5013D00664C34 /* StartLocation.m */; };
 		78D6B2EE19B512DE00664C34 /* StepLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E819B5013D00664C34 /* StepLocation.m */; };
 		78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */; };
+		78FC954119B9D64200E1D885 /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC954019B9D64200E1D885 /* Journey.m */; };
+		78FC954219B9D64200E1D885 /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC954019B9D64200E1D885 /* Journey.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,8 +119,6 @@
 		787FA217197AAB4E004B084E /* JourneyListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyListCell.m; sourceTree = "<group>"; };
 		787FA219197AAB68004B084E /* EDSunriseSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EDSunriseSet.h; sourceTree = "<group>"; };
 		787FA21A197AAB68004B084E /* EDSunriseSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EDSunriseSet.m; sourceTree = "<group>"; };
-		787FA21C197AAC72004B084E /* Journey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Journey.h; sourceTree = "<group>"; };
-		787FA21D197AAC72004B084E /* Journey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Journey.m; sourceTree = "<group>"; };
 		787FA220197AAC73004B084E /* Step.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Step.h; sourceTree = "<group>"; };
 		787FA221197AAC73004B084E /* Step.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Step.m; sourceTree = "<group>"; };
 		787FA224197AAC73004B084E /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
@@ -153,6 +151,9 @@
 		78D6B2EF19B5259400664C34 /* ParentCab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ParentCab.entitlements; sourceTree = "<group>"; };
 		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../CoreDataHelper.h; sourceTree = "<group>"; };
 		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../CoreDataHelper.m; sourceTree = "<group>"; };
+		78FC953E19B9D56C00E1D885 /* ParentCab 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ParentCab 3.xcdatamodel"; sourceTree = "<group>"; };
+		78FC953F19B9D64200E1D885 /* Journey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Journey.h; sourceTree = "<group>"; };
+		78FC954019B9D64200E1D885 /* Journey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Journey.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -322,12 +323,12 @@
 			isa = PBXGroup;
 			children = (
 				787FA1D6197AAA24004B084E /* ParentCab.xcdatamodeld */,
+				78FC953F19B9D64200E1D885 /* Journey.h */,
+				78FC954019B9D64200E1D885 /* Journey.m */,
 				787FA224197AAC73004B084E /* Location.h */,
 				787FA225197AAC73004B084E /* Location.m */,
 				787FA220197AAC73004B084E /* Step.h */,
 				787FA221197AAC73004B084E /* Step.m */,
-				787FA21C197AAC72004B084E /* Journey.h */,
-				787FA21D197AAC72004B084E /* Journey.m */,
 				78D6B2E319B5013D00664C34 /* EndLocation.h */,
 				78D6B2E419B5013D00664C34 /* EndLocation.m */,
 				78D6B2E519B5013D00664C34 /* StartLocation.h */,
@@ -504,10 +505,10 @@
 				787FA20C197AAADE004B084E /* JourneyRouteDataSource.m in Sources */,
 				787FA201197AAAB5004B084E /* TripViewController.m in Sources */,
 				787FA1D2197AAA24004B084E /* main.m in Sources */,
-				787FA21E197AAC72004B084E /* Journey.m in Sources */,
 				787FA218197AAB4E004B084E /* JourneyListCell.m in Sources */,
 				7839441819A886C0003F8220 /* DistanceUnitTableViewController.m in Sources */,
 				787FA20D197AAADE004B084E /* RouteOverlay.m in Sources */,
+				78FC954119B9D64200E1D885 /* Journey.m in Sources */,
 				78D6B2EB19B5013D00664C34 /* StepLocation.m in Sources */,
 				787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */,
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,
@@ -534,7 +535,6 @@
 			files = (
 				781CB00419A22536009C90D9 /* MockCLGeocoder.m in Sources */,
 				78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
-				787FA21F197AAC72004B084E /* Journey.m in Sources */,
 				78D6B2ED19B512DA00664C34 /* StartLocation.m in Sources */,
 				78929747198AFDCB00581F81 /* SettingsViewController.m in Sources */,
 				78AF9B4C199D5E6200D4DAD6 /* TripViewControllerTests.m in Sources */,
@@ -545,6 +545,7 @@
 				781CB00719A22742009C90D9 /* PCPlacemark.m in Sources */,
 				78D6B2EC19B512D500664C34 /* EndLocation.m in Sources */,
 				78AF9B4A199D3FA700D4DAD6 /* FareServiceTests.m in Sources */,
+				78FC954219B9D64200E1D885 /* Journey.m in Sources */,
 				78AF9B48199D204500D4DAD6 /* FareService.m in Sources */,
 				78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */,
 				7885A46E19A7AD9F0045330F /* JourneyListCellTests.m in Sources */,
@@ -797,10 +798,11 @@
 		787FA1D6197AAA24004B084E /* ParentCab.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				78FC953E19B9D56C00E1D885 /* ParentCab 3.xcdatamodel */,
 				78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */,
 				787FA1D7197AAA24004B084E /* ParentCab.xcdatamodel */,
 			);
-			currentVersion = 78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */;
+			currentVersion = 78FC953E19B9D56C00E1D885 /* ParentCab 3.xcdatamodel */;
 			name = ParentCab.xcdatamodeld;
 			path = ../ParentCab.xcdatamodeld;
 			sourceTree = "<group>";

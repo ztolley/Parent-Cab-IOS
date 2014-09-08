@@ -57,5 +57,17 @@
 	}
 
 }
+- (void)backgroundSaveContext {
+	if ([_context hasChanges]) {
+		NSError *error = nil;
+		if ([_context save:&error]) {
+			NSLog(@"_context SAVED changes to persistent store");
+		} else {
+			NSLog(@"Failed to save _context: %@", error);
+		}
+	} else {
+		NSLog(@"SKIPPED _context save, there are no changes!");
+	}
+}
 
 @end
