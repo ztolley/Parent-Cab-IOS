@@ -44,11 +44,8 @@
 		78AF9B48199D204500D4DAD6 /* FareService.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B46199D204500D4DAD6 /* FareService.m */; };
 		78AF9B4A199D3FA700D4DAD6 /* FareServiceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B49199D3FA700D4DAD6 /* FareServiceTests.m */; };
 		78AF9B4C199D5E6200D4DAD6 /* TripViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78AF9B4B199D5E6200D4DAD6 /* TripViewControllerTests.m */; };
-		78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
-		78B178B01981145600380B71 /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178AE1981145600380B71 /* CoreDataTVC.m */; };
 		78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
 		78B178B419812F6500380B71 /* PCabCoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78B178B219812F6500380B71 /* PCabCoreDataHelper.m */; };
-		78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D51B6C197D443600710E1C /* CoreDataHelper.m */; };
 		78D6B2E919B5013D00664C34 /* EndLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E419B5013D00664C34 /* EndLocation.m */; };
 		78D6B2EA19B5013D00664C34 /* StartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E619B5013D00664C34 /* StartLocation.m */; };
 		78D6B2EB19B5013D00664C34 /* StepLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E819B5013D00664C34 /* StepLocation.m */; };
@@ -56,6 +53,9 @@
 		78D6B2ED19B512DA00664C34 /* StartLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E619B5013D00664C34 /* StartLocation.m */; };
 		78D6B2EE19B512DE00664C34 /* StepLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 78D6B2E819B5013D00664C34 /* StepLocation.m */; };
 		78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */; };
+		78F98AB219BFA41C00E9BF9A /* CoreDataHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F98AA919BFA41C00E9BF9A /* CoreDataHelper.m */; };
+		78F98AB419BFA41C00E9BF9A /* CoreDataTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F98AAD19BFA41C00E9BF9A /* CoreDataTVC.m */; };
+		78F98AB919BFAFBE00E9BF9A /* JourneyImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 78F98AB819BFAFBE00E9BF9A /* JourneyImporter.m */; };
 		78FC954119B9D64200E1D885 /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC954019B9D64200E1D885 /* Journey.m */; };
 		78FC954219B9D64200E1D885 /* Journey.m in Sources */ = {isa = PBXBuildFile; fileRef = 78FC954019B9D64200E1D885 /* Journey.m */; };
 /* End PBXBuildFile section */
@@ -135,12 +135,8 @@
 		78AF9B46199D204500D4DAD6 /* FareService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FareService.m; sourceTree = "<group>"; };
 		78AF9B49199D3FA700D4DAD6 /* FareServiceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FareServiceTests.m; sourceTree = "<group>"; };
 		78AF9B4B199D5E6200D4DAD6 /* TripViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TripViewControllerTests.m; sourceTree = "<group>"; };
-		78B178AD1981145600380B71 /* CoreDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTVC.h; sourceTree = "<group>"; };
-		78B178AE1981145600380B71 /* CoreDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTVC.m; sourceTree = "<group>"; };
 		78B178B119812F6500380B71 /* PCabCoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCabCoreDataHelper.h; sourceTree = "<group>"; };
 		78B178B219812F6500380B71 /* PCabCoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCabCoreDataHelper.m; sourceTree = "<group>"; };
-		78D51B6B197D443600710E1C /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
-		78D51B6C197D443600710E1C /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
 		78D6B2E219B4FACC00664C34 /* ParentCab 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ParentCab 2.xcdatamodel"; sourceTree = "<group>"; };
 		78D6B2E319B5013D00664C34 /* EndLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EndLocation.h; sourceTree = "<group>"; };
 		78D6B2E419B5013D00664C34 /* EndLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EndLocation.m; sourceTree = "<group>"; };
@@ -151,6 +147,12 @@
 		78D6B2EF19B5259400664C34 /* ParentCab.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = ParentCab.entitlements; sourceTree = "<group>"; };
 		78F5D6C1199A7FA8000B97A7 /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataHelper.h; path = ../CoreDataHelper.h; sourceTree = "<group>"; };
 		78F5D6C2199A7FA8000B97A7 /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataHelper.m; path = ../CoreDataHelper.m; sourceTree = "<group>"; };
+		78F98AA819BFA41C00E9BF9A /* CoreDataHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataHelper.h; sourceTree = "<group>"; };
+		78F98AA919BFA41C00E9BF9A /* CoreDataHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataHelper.m; sourceTree = "<group>"; };
+		78F98AAC19BFA41C00E9BF9A /* CoreDataTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTVC.h; sourceTree = "<group>"; };
+		78F98AAD19BFA41C00E9BF9A /* CoreDataTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTVC.m; sourceTree = "<group>"; };
+		78F98AB719BFAFBE00E9BF9A /* JourneyImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JourneyImporter.h; sourceTree = "<group>"; };
+		78F98AB819BFAFBE00E9BF9A /* JourneyImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JourneyImporter.m; sourceTree = "<group>"; };
 		78FC953E19B9D56C00E1D885 /* ParentCab 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ParentCab 3.xcdatamodel"; sourceTree = "<group>"; };
 		78FC953F19B9D64200E1D885 /* Journey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Journey.h; sourceTree = "<group>"; };
 		78FC954019B9D64200E1D885 /* Journey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Journey.m; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				787FA20E197AAAE1004B084E /* Views */,
 				787FA1F8197AAA42004B084E /* Helpers */,
 				787FA1F7197AAA3B004B084E /* Services */,
+				78F98AA719BFA29D00E9BF9A /* CoreDataUtilities */,
 				787FA1F6197AAA35004B084E /* Model */,
 				787FA1F5197AAA2E004B084E /* Controllers */,
 				787FA1D3197AAA24004B084E /* AppDelegate.h */,
@@ -336,12 +339,6 @@
 				78D6B2E719B5013D00664C34 /* StepLocation.h */,
 				78D6B2E819B5013D00664C34 /* StepLocation.m */,
 				787FA228197AAC84004B084E /* model.h */,
-				78B178AD1981145600380B71 /* CoreDataTVC.h */,
-				78B178AE1981145600380B71 /* CoreDataTVC.m */,
-				78D51B6B197D443600710E1C /* CoreDataHelper.h */,
-				78D51B6C197D443600710E1C /* CoreDataHelper.m */,
-				78B178B119812F6500380B71 /* PCabCoreDataHelper.h */,
-				78B178B219812F6500380B71 /* PCabCoreDataHelper.m */,
 				789F6E8119A29E070092B555 /* Settings.h */,
 				789F6E8219A29E070092B555 /* Settings.m */,
 			);
@@ -391,6 +388,21 @@
 				787FA20F197AAB19004B084E /* CoreData.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78F98AA719BFA29D00E9BF9A /* CoreDataUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				78B178B119812F6500380B71 /* PCabCoreDataHelper.h */,
+				78B178B219812F6500380B71 /* PCabCoreDataHelper.m */,
+				78F98AA819BFA41C00E9BF9A /* CoreDataHelper.h */,
+				78F98AA919BFA41C00E9BF9A /* CoreDataHelper.m */,
+				78F98AAC19BFA41C00E9BF9A /* CoreDataTVC.h */,
+				78F98AAD19BFA41C00E9BF9A /* CoreDataTVC.m */,
+				78F98AB719BFAFBE00E9BF9A /* JourneyImporter.h */,
+				78F98AB819BFAFBE00E9BF9A /* JourneyImporter.m */,
+			);
+			path = CoreDataUtilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,20 +523,21 @@
 				78FC954119B9D64200E1D885 /* Journey.m in Sources */,
 				78D6B2EB19B5013D00664C34 /* StepLocation.m in Sources */,
 				787FA1D8197AAA24004B084E /* ParentCab.xcdatamodeld in Sources */,
+				78F98AB219BFA41C00E9BF9A /* CoreDataHelper.m in Sources */,
 				787FA207197AAAC9004B084E /* TripRecorderService.m in Sources */,
-				78B178AF1981145600380B71 /* CoreDataTVC.m in Sources */,
 				787FA222197AAC73004B084E /* Step.m in Sources */,
 				78AF9B47199D204500D4DAD6 /* FareService.m in Sources */,
 				78929746198AFDCB00581F81 /* SettingsViewController.m in Sources */,
-				78D51B6D197D443600710E1C /* CoreDataHelper.m in Sources */,
 				78D6B2E919B5013D00664C34 /* EndLocation.m in Sources */,
 				787FA204197AAAC1004B084E /* TripListViewController.m in Sources */,
 				78D6B2EA19B5013D00664C34 /* StartLocation.m in Sources */,
+				78F98AB419BFA41C00E9BF9A /* CoreDataTVC.m in Sources */,
 				787FA200197AAAB5004B084E /* TripRecordViewController.m in Sources */,
 				787FA1FB197AAA9B004B084E /* GoogleMapsImage.m in Sources */,
 				787FA226197AAC73004B084E /* Location.m in Sources */,
 				78B178B319812F6500380B71 /* PCabCoreDataHelper.m in Sources */,
 				787FA21B197AAB68004B084E /* EDSunriseSet.m in Sources */,
+				78F98AB919BFAFBE00E9BF9A /* JourneyImporter.m in Sources */,
 				789F6E8319A29E070092B555 /* Settings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -550,7 +563,6 @@
 				78F5D6C3199A7FA8000B97A7 /* CoreDataHelper.m in Sources */,
 				7885A46E19A7AD9F0045330F /* JourneyListCellTests.m in Sources */,
 				785301FE199BE31200799BE2 /* TripRecorderServiceTests.m in Sources */,
-				78B178B01981145600380B71 /* CoreDataTVC.m in Sources */,
 				78D6B2EE19B512DE00664C34 /* StepLocation.m in Sources */,
 				789F6E8619A29E850092B555 /* SettingsTests.m in Sources */,
 			);
@@ -663,7 +675,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParentCab/ParentCab.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
@@ -682,7 +694,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = ParentCab/ParentCab.entitlements;
-				CODE_SIGN_IDENTITY = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = ParentCab/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
