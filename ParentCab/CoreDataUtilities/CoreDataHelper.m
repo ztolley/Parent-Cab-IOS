@@ -1,16 +1,5 @@
-//
-//  CoreDataHelper.m
-//  v2.0
-//
-//  Created by Tim Roadley on 09/09/13.
-//  Copyright (c) 2013 Tim Roadley. All rights reserved.
-//
-//  This class is free to use in production applications for owners of "Learning Core Data for iOS" by Tim Roadley
-//
-
 #import "CoreDataHelper.h"
 #import "JourneyImporter.h"
-#import "Faulter.h"
 
 @implementation CoreDataHelper
 
@@ -30,7 +19,6 @@
 
 #pragma mark - FILES
 NSString *storeFilename = @"parentcab.sqlite";
-NSString *sourceStoreFilename = @"DefaultData.sqlite";
 NSString *iCloudStoreFilename = @"iCloud.sqlite";
 NSString *ubiquityStoreName = @"ParentCab";
 
@@ -66,14 +54,6 @@ NSString *ubiquityStoreName = @"ParentCab";
     }
     return [[self applicationStoresDirectory] URLByAppendingPathComponent:storeFilename];
 }
-- (NSURL *)sourceStoreURL {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    
-    return [NSURL fileURLWithPath:[[NSBundle mainBundle] pathForResource:[sourceStoreFilename stringByDeletingPathExtension]
-                                                                  ofType:[sourceStoreFilename pathExtension]]];
-}
 - (NSURL *)iCloudStoreURL {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
@@ -103,22 +83,7 @@ NSString *ubiquityStoreName = @"ParentCab";
     _context = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     [_context setParentContext:_parentContext];
     [_context setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-    
-    _importContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [_importContext performBlockAndWait:^{
-        [_importContext setParentContext:_context];
-        [_importContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-        [_importContext setUndoManager:nil]; // the default on iOS
-    }];
-    
-    //_sourceCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_model];
-    _sourceContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    [_sourceContext performBlockAndWait:^{
-        [_sourceContext setMergePolicy:NSMergeByPropertyObjectTrumpMergePolicy];
-        [_sourceContext setParentContext:_context];
-        [_sourceContext setUndoManager:nil]; // the default on iOS
-    }];
-    
+	
     _seedCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:_model];
     _seedContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     [_seedContext performBlockAndWait:^{
@@ -141,7 +106,6 @@ NSString *ubiquityStoreName = @"ParentCab";
 	@{
 	  NSMigratePersistentStoresAutomaticallyOption:@YES
 	  ,NSInferMappingModelAutomaticallyOption:@YES
-	  //,NSSQLitePragmasOption: @{@"journal_mode": @"DELETE"} // Option to disable WAL mode
 	  };
 	NSError *error = nil;
 	_store = [_coordinator addPersistentStoreWithType:NSSQLiteStoreType
@@ -156,34 +120,11 @@ NSString *ubiquityStoreName = @"ParentCab";
 	}
 
 }
-- (void)loadSourceStore {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    if (_sourceStore) {return;} // Don’t load source store if it's already loaded
-    
-    NSDictionary *options =
-    @{
-      NSReadOnlyPersistentStoreOption:@YES
-      };
-    NSError *error = nil;
-    _sourceStore = [_sourceCoordinator addPersistentStoreWithType:NSSQLiteStoreType
-                                                    configuration:nil
-                                                              URL:[self sourceStoreURL]
-                                                          options:options
-                                                            error:&error];
-    if (!_sourceStore) {
-        NSLog(@"Failed to add source store. Error: %@", error);abort();
-    } else {
-        NSLog(@"Successfully added source store: %@", _sourceStore);
-    }
-}
 - (void)setupCoreData {
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
     if (!_store && !_iCloudStore) {
-
 
         if ([self iCloudEnabledByUser]) {
             NSLog(@"** Attempting to load the iCloud Store **");
@@ -192,7 +133,6 @@ NSString *ubiquityStoreName = @"ParentCab";
             }
         }
         NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
-        //[self setDefaultDataStoreAsInitialStore]; // Enable if you have a DefaultData.sqlite file you'd like to ship with the application
         [self loadStore];
     } else {
         NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
@@ -237,35 +177,6 @@ NSString *ubiquityStoreName = @"ParentCab";
         }
         else {
             NSLog(@"_parentContext SKIPPED saving as there are no changes");
-        }
-    }];
-}
-+ (void)saveContextHierarchy:(NSManagedObjectContext*)moc {
-    [moc performBlockAndWait:^{
-        if ([moc hasChanges]) {
-            [moc processPendingChanges];
-            NSError *error;
-            if (![moc save:&error]) {
-                NSLog(@"ERROR Saving: %@",error);
-            } else {
-                NSLog(@"SAVED %@", moc);
-            }
-        }
-        // Save the parent context, if any.
-        if ([moc parentContext]) {
-            [CoreDataHelper saveContextHierarchy:moc.parentContext];
-        }
-    }];
-}
-+ (void)resetContextHierarchy:(NSManagedObjectContext*)moc {
-    
-    [moc performBlockAndWait:^{
-        
-        [moc reset];
-        
-        // Reset the parent context, if any.
-        if ([moc parentContext]) {
-            [CoreDataHelper resetContextHierarchy:moc.parentContext];
         }
     }];
 }
@@ -365,36 +276,6 @@ NSString *ubiquityStoreName = @"ParentCab";
     }
 }
 
-#pragma mark - DELEGATE: UIAlertView
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-
-    if (alertView == self.seedAlertView) {
-        if (buttonIndex == alertView.firstOtherButtonIndex) {
-            [self mergeNoniCloudDataWithiCloud];
-        }
-    }
-}
-
-#pragma mark - UNIQUE ATTRIBUTE SELECTION
-- (NSDictionary*)selectedUniqueAttributes {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    NSMutableArray *entities   = [NSMutableArray new];
-    NSMutableArray *attributes = [NSMutableArray new];
-
-    // Select an attribute in each entity for uniqueness
-    //[entities addObject:@"Journey"];[attributes addObject:@"startTime"];
-    //[entities addObject:@"Step"];[attributes addObject:@"timestamp"];
-	
-    NSDictionary *dictionary = [NSDictionary dictionaryWithObjects:attributes
-                                                           forKeys:entities];
-    return dictionary;
-}
-
 #pragma mark – UNDERLYING DATA CHANGE NOTIFICATION
 - (void)somethingChanged {
     if (debug==1) {
@@ -416,8 +297,6 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (![_coordinator removePersistentStore:_store error:&error]) {
         NSLog(@"Unable to remove persistent store : %@", error);
     }
-    [self resetContext:_sourceContext];
-    [self resetContext:_importContext];
     [self resetContext:_context];
     [self resetContext:_parentContext];
     _store = nil;
@@ -441,10 +320,6 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    [_importContext performBlockAndWait:^{
-        [_importContext save:nil];
-        [self resetContext:_importContext];
-    }];
     [_context performBlockAndWait:^{
         [_context save:nil];
         [self resetContext:_context];
@@ -522,7 +397,7 @@ NSString *ubiquityStoreName = @"ParentCab";
                                                       error:&error];
     if (_iCloudStore) {
         NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
-        [self confirmMergeWithiCloud];
+        [self mergeNoniCloudDataWithiCloud];
         //[self destroyAlliCloudDataForThisApplication];
         return YES;
     }
@@ -553,10 +428,7 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    [_importContext performBlockAndWait:^{
-        [_importContext save:nil];
-        [self resetContext:_importContext];
-    }];
+
     [_context performBlockAndWait:^{
         [_context save:nil];
         [self resetContext:_context];
@@ -665,6 +537,14 @@ NSString *ubiquityStoreName = @"ParentCab";
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
 
+	if (![[NSFileManager defaultManager] fileExistsAtPath:[[self storeURL] path]]) {
+		if (debug==1) {
+			NSLog(@"Skipped unnecessary migration of Non-iCloud store to iCloud (there's no store file).");
+		}
+		return;
+	}
+	
+	
     [_seedContext performBlock:^{
         
         if ([self loadNoniCloudStoreAsSeedStore]) {
@@ -674,16 +554,15 @@ NSString *ubiquityStoreName = @"ParentCab";
 			JourneyImporter *journeyImporter = [[JourneyImporter alloc] init];
 			[journeyImporter deepCopyJourneysFromContext:_seedContext toContext:_parentContext];
 			[self backgroundSaveContext];
-			[[NSNotificationCenter defaultCenter] postNotificationName:@"SomethingChanged" object:nil];
 
             NSLog(@"*** FINISHED DEEP COPY FROM NON-ICLOUD STORE TO ICLOUD STORE ***");
             NSLog(@"*** REMOVING OLD NON-ICLOUD STORE ***");
             
-            /*if ([self unloadStore:_seedStore]) {
+            if ([self unloadStore:_seedStore]) {
                 
                 [_context performBlock:^{
                     // Tell the interface to refresh once import completes
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SomethingChanged" object:nil];
+                    [self somethingChanged];
                     
                     // Remove migrated store
                     NSString *wal = [storeFilename stringByAppendingString:@"-wal"];
@@ -694,25 +573,9 @@ NSString *ubiquityStoreName = @"ParentCab";
                     [self removeFileAtURL:[[self applicationStoresDirectory] URLByAppendingPathComponent:shm]];
                 }];
             }
-			 */
         }
 
     }];
-}
-- (void)confirmMergeWithiCloud {
-    if (debug==1) {
-        NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
-    }
-    if (![[NSFileManager defaultManager] fileExistsAtPath:[[self storeURL] path]]) {
-        NSLog(@"Skipped unnecessary migration of Non-iCloud store to iCloud (there's no store file).");
-        return;
-    }
-    _seedAlertView = [[UIAlertView alloc] initWithTitle:@"Merge with iCloud?"
-                                                message:@"This will move your existing data into iCloud. If you don't merge now, you can merge later by toggling iCloud for this application in Settings."
-                                               delegate:self
-                                      cancelButtonTitle:@"Don't Merge"
-                                      otherButtonTitles:@"Merge", nil];
-    [_seedAlertView show];
 }
 
 #pragma mark - ICLOUD RESET

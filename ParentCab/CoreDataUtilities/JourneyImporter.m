@@ -14,10 +14,10 @@
 - (void)deepCopyJourneysFromContext:(NSManagedObjectContext*)sourceContext
 			   toContext:(NSManagedObjectContext*)targetContext
 {
+	int x = 0;
 	
 	// Fetch all the journeys in the source context and loop through (can we do this in batches?)
 	NSArray *journeys = [self currentJourneys:sourceContext];
-	int x = 1;
 	
 	for (Journey *journey in journeys) {
 		
@@ -29,25 +29,16 @@
 		targetJourney.fare = journey.fare;
 		
 		StartLocation *targetStartLocation = [NSEntityDescription insertNewObjectForEntityForName:@"StartLocation" inManagedObjectContext:targetContext];
-		targetStartLocation.latitude = journey.startLocation.latitude;
-		targetStartLocation.longitude = journey.startLocation.longitude;
-		if (journey.startLocation.postcode) targetStartLocation.postcode = [NSString stringWithString:journey.startLocation.postcode];
-		if (journey.startLocation.thoroughfare) targetStartLocation.thoroughfare = [NSString stringWithString:journey.startLocation.thoroughfare];
+		[self copyLocationFrom: journey.startLocation to:targetStartLocation];
 		targetJourney.startLocation = targetStartLocation;
 		
 		EndLocation *targetEndLocation = [NSEntityDescription insertNewObjectForEntityForName:@"EndLocation" inManagedObjectContext:targetContext];
-		targetEndLocation.latitude = journey.endLocation.latitude;
-		targetEndLocation.longitude = journey.endLocation.longitude;
-		if (journey.endLocation.postcode) targetEndLocation.postcode = [NSString stringWithString:journey.endLocation.postcode];
-		if (journey.endLocation.thoroughfare) targetEndLocation.thoroughfare = [NSString stringWithString:journey.endLocation.thoroughfare];
+		[self copyLocationFrom:journey.endLocation to:targetEndLocation];
 		targetJourney.endLocation = targetEndLocation;
 		
 		for (Step *step in journey.steps) {
 			StepLocation *targetStepLocation = [NSEntityDescription insertNewObjectForEntityForName:@"StepLocation" inManagedObjectContext:targetContext];
-			targetStepLocation.latitude = step.location.latitude;
-			targetStepLocation.longitude = step.location.longitude;
-			if (step.location.postcode) targetStepLocation.postcode = [NSString stringWithString:step.location.postcode];
-			if (step.location.thoroughfare) targetStepLocation.thoroughfare = [NSString stringWithString:step.location.thoroughfare];
+			[self copyLocationFrom:step.location to:targetStepLocation];
 			
 			Step *targetStep =[NSEntityDescription insertNewObjectForEntityForName:@"Step" inManagedObjectContext:targetContext];
 			targetStep.location = targetStepLocation;
@@ -56,15 +47,24 @@
 			
 			[targetJourney addStepsObject:targetStep];
 		}
-
-		NSLog(@"-- %d --", x);
-		x++;
 		
+		x++;
 	}
 	
 	
+	NSLog(@"Imported %d Journeys", x);
+	
 }
 
+- (void)copyLocationFrom:(Location *)source to:(Location *)dest {
+	
+	dest.latitude = source.latitude;
+	dest.longitude = source.longitude;
+	if (source.postcode) dest.postcode = [NSString stringWithString:source.postcode];
+	if (source.thoroughfare) dest.thoroughfare = [NSString stringWithString:source.thoroughfare];
+	
+	
+}
 - (NSArray *)currentJourneys:(NSManagedObjectContext *)sourceContext {
 	
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Journey"];
