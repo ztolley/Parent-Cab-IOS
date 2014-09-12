@@ -32,7 +32,7 @@
 	
 	
 	NSString *encString = [self encodeStringWithCoordinates: steps];
-	NSString *urlEncString = (__bridge NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)encString, NULL, CFSTR(";:"), kCFStringEncodingUTF8);
+	NSString *urlEncString = (__bridge_transfer NSString *)CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, (__bridge CFStringRef)encString, NULL, CFSTR(";:"), kCFStringEncodingUTF8);
 	NSString *url = [NSString stringWithFormat:@"http://maps.googleapis.com/maps/api/staticmap?size=400x400&sensor=true&path=enc:%@", urlEncString];
 	return url;
 }
