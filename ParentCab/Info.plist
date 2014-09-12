@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This Application need to know your location to do it's job, is that ok?</string>
+	<string>This application needs to know your location to do its job, is that ok? Dont worry, we won&apos;t peek.</string>
 	<key>PencePerMeter</key>
 	<real>0.63</real>
 	<key>UIMainStoryboardFile</key>
