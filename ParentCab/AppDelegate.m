@@ -25,6 +25,7 @@
 	// Override point for customization after application launch.
 	_coreDataHelper = [PCabCoreDataHelper new];
 	[_coreDataHelper setupCoreData];
+	[_coreDataHelper iCloudAccountIsSignedIn];
 
 	return YES;
 }

@@ -12,6 +12,12 @@
 #import "Location.h"
 #import "StepLocation.h"
 
+@interface JourneyRouteDataSource ()
+{
+	NSArray *steps;
+}
+@end
+
 
 @implementation JourneyRouteDataSource
 
@@ -20,6 +26,9 @@
 	self = [super init];
 	if (self) {
 		self.journey = journey;
+		
+		NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
+		steps = [journey.steps sortedArrayUsingDescriptors:@[sortDescriptor]];
 	}
 	return self;
 	
@@ -33,8 +42,8 @@
 - (CLLocationCoordinate2D)locationForRouteOverlay:(RouteOverlay *)overlay AtIndex:(NSUInteger)index
 {
 	CLLocationCoordinate2D location;
-
-	Step *step = (Step *)[self.journey.steps objectAtIndex:index];
+	
+	Step *step = steps[index];
 	
 	location.latitude = step.location.latitude;
 	location.longitude = step.location.longitude;
