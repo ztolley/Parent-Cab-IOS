@@ -54,7 +54,7 @@
 	if (debug==1) {
 		NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
 	}
-	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+	[[self cdh] ensureAppropriateStoreIsLoaded];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application

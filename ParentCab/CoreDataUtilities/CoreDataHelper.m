@@ -485,15 +485,8 @@ NSString *ubiquityStoreName = @"ParentCab";
     [self resetCoreData];
     [self setupCoreData];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"SomethingChanged"
-                                                        object:nil];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Your preference on using iCloud with this application appears to have changed"
-                                                    message:@"Content has been updated accordingly"
-                                                   delegate:nil
-                                          cancelButtonTitle:nil
-                                          otherButtonTitles:@"Ok", nil];
-    [alert show];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"SomethingChanged" object:nil];
+
 }
 
 #pragma mark - ICLOUD SEEDING
