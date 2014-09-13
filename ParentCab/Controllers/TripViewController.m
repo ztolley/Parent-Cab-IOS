@@ -44,7 +44,14 @@
 	locationManager.delegate = self;
 	self.map.delegate = self;
 	
-	[locationManager requestWhenInUseAuthorization];
+	if ([locationManager respondsToSelector:
+		 @selector(requestWhenInUseAuthorization)])
+	{
+		[locationManager requestWhenInUseAuthorization];
+	} else {
+		self.map.showsUserLocation = YES;
+		[self showStart];
+	}
 
 	self.tripRecorder = [[TripRecorderService alloc] init];
 }
