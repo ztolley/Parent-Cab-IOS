@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PCabCoreDataHelper.h"
-#import <CoreLocation/CoreLocation.h>
+#import "SDCloudUserDefaults.h"
 
 @interface AppDelegate ()
 @property (nonatomic, strong, readonly) PCabCoreDataHelper *coreDataHelper;
