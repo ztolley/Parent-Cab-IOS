@@ -97,6 +97,13 @@ didChangeSection:(id <NSFetchedResultsSectionInfo>)sectionInfo
             [[self TVFromFRC:controller] deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
                                        withRowAnimation:UITableViewRowAnimationFade];
             break;
+		
+		case NSFetchedResultsChangeMove:
+			break;
+			
+		case NSFetchedResultsChangeUpdate:
+			break;
+			
     }
 }
 
