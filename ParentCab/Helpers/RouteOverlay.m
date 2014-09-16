@@ -112,8 +112,6 @@
 	self.routeLine = [MKPolyline polylineWithPoints:pointArr count:pointCount];
 	
 	_routeRect = MKMapRectMake(southWestPoint.x, southWestPoint.y, northEastPoint.x - southWestPoint.x, northEastPoint.y - southWestPoint.y);
-
-	// TO-DO add something here to zoom out a little, this never quite shows the whole rote.
 	
 	// clear the memory allocated earlier for the points
 	free(pointArr);
@@ -125,27 +123,16 @@
 }
 
 #pragma mark MKMapViewDelegate
-- (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id <MKOverlay>)overlay
-{
-	MKOverlayView* overlayView = nil;
-	
-	if(overlay == self.routeLine)
-	{
-		//if we have not yet created an overlay view for this overlay, create it now.
-		if(nil == self.routeLineView)
-		{
-			self.routeLineView = [[MKPolylineView alloc] initWithPolyline:self.routeLine];
-			self.routeLineView.fillColor = [UIColor redColor];
-			self.routeLineView.strokeColor = [UIColor redColor];
-			self.routeLineView.lineWidth = 3;
-		}
-		
-		overlayView = self.routeLineView;
-		
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay {
+	if ([overlay isKindOfClass:MKPolyline.class]) {
+		MKPolylineRenderer *lineView = [[MKPolylineRenderer alloc] initWithOverlay:overlay];
+		lineView.strokeColor = [UIColor redColor];
+		lineView.fillColor = [UIColor redColor];
+		lineView.lineWidth = 5;
+		return lineView;
 	}
 	
-	return overlayView;
-	
+	return nil;
 }
 
 @end
