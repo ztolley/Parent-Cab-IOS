@@ -41,10 +41,11 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (![fileManager fileExistsAtPath:[storesDirectory path]]) {
         NSError *error = nil;
         if ([fileManager createDirectoryAtURL:storesDirectory withIntermediateDirectories:YES attributes:nil error:&error]) {
-            if (debug==1) {
-                NSLog(@"Successfully created Stores directory");}
+            if (debug==1) NSLog(@"Successfully created Stores directory");
         }
-        else {NSLog(@"FAILED to create Stores directory: %@", error);}
+        else {
+			if (debug==1) NSLog(@"FAILED to create Stores directory: %@", error);
+		}
     }
     return storesDirectory;
 }
@@ -58,8 +59,7 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (debug==1) {
         NSLog(@"Running %@ '%@'", self.class, NSStringFromSelector(_cmd));
     }
-    return [[self applicationStoresDirectory]
-            URLByAppendingPathComponent:iCloudStoreFilename];
+    return [[self applicationStoresDirectory] URLByAppendingPathComponent:iCloudStoreFilename];
 }
 
 #pragma mark - SETUP
@@ -114,9 +114,9 @@ NSString *ubiquityStoreName = @"ParentCab";
 											  options:options
 												error:&error];
 	if (!_store) {
-		NSLog(@"Failed to add store. Error: %@", error);abort();
+		if (debug==1) NSLog(@"Failed to add store. Error: %@", error);abort();
 	} else {
-		NSLog(@"Successfully added store: %@", _store);
+		if (debug==1) NSLog(@"Successfully added store: %@", _store);
 	}
 
 }
@@ -127,15 +127,19 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (!_store && !_iCloudStore) {
 
         if ([self iCloudEnabledByUser]) {
-            NSLog(@"** Attempting to load the iCloud Store **");
+            if (debug==1) NSLog(@"** Attempting to load the iCloud Store **");
             if ([self loadiCloudStore]) {
                 return;
             }
         }
-        NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
+        if (debug==1) {
+			NSLog(@"** Attempting to load the Local, Non-iCloud Store **");
+		}
         [self loadStore];
     } else {
-        NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
+        if (debug==1) {
+			NSLog(@"SKIPPED setupCoreData, there's an existing Store:\n ** _store(%@)\n ** _iCloudStore(%@)", _store, _iCloudStore);
+		}
     }
 }
 
@@ -147,13 +151,13 @@ NSString *ubiquityStoreName = @"ParentCab";
     if ([_context hasChanges]) {
         NSError *error = nil;
         if ([_context save:&error]) {
-            NSLog(@"_context SAVED changes to persistent store");
+            if (debug==1) NSLog(@"_context SAVED changes to persistent store");
         } else {
-            NSLog(@"Failed to save _context: %@", error);
+            if (debug==1) NSLog(@"Failed to save _context: %@", error);
             [self showValidationError:error];
         }
     } else {
-        NSLog(@"SKIPPED _context save, there are no changes!");
+        if (debug==1) NSLog(@"SKIPPED _context save, there are no changes!");
     }
 }
 - (void)backgroundSaveContext {
@@ -168,15 +172,15 @@ NSString *ubiquityStoreName = @"ParentCab";
         if ([_parentContext hasChanges]) {
             NSError *error = nil;
             if ([_parentContext save:&error]) {
-                NSLog(@"_parentContext SAVED changes to persistent store");
+                if (debug==1) NSLog(@"_parentContext SAVED changes to persistent store");
             }
             else {
-                NSLog(@"_parentContext FAILED to save: %@", error);
+                if (debug==1) NSLog(@"_parentContext FAILED to save: %@", error);
                 [self showValidationError:error];
             }
         }
         else {
-            NSLog(@"_parentContext SKIPPED saving as there are no changes");
+            if (debug==1) NSLog(@"_parentContext SKIPPED saving as there are no changes");
         }
     }];
 }
@@ -355,7 +359,7 @@ NSString *ubiquityStoreName = @"ParentCab";
     if (![[NSFileManager defaultManager] removeItemAtURL:url error:&error]) {
         NSLog(@"Failed to delete '%@' from '%@'", [url lastPathComponent], [url URLByDeletingLastPathComponent]);
     } else {
-        NSLog(@"Deleted '%@' from '%@'", [url lastPathComponent], [url URLByDeletingLastPathComponent]);
+        if (debug==1) NSLog(@"Deleted '%@' from '%@'", [url lastPathComponent], [url URLByDeletingLastPathComponent]);
     }
 }
 
@@ -366,14 +370,14 @@ NSString *ubiquityStoreName = @"ParentCab";
     }
     id token = [[NSFileManager defaultManager] ubiquityIdentityToken];
     if (token) {
-        NSLog(@"** iCloud is SIGNED IN with token '%@' **", token);
+        if (debug==1) NSLog(@"** iCloud is SIGNED IN with token '%@' **", token);
         return YES;
     }
-    NSLog(@"** iCloud is NOT SIGNED IN **");
-    NSLog(@"--> Is iCloud Documents and Data enabled for a valid iCloud account on your Mac & iOS Device or iOS Simulator?");
-    NSLog(@"--> Have you enabled the iCloud Capability in the Application Target?");
-    NSLog(@"--> Is there a CODE_SIGN_ENTITLEMENTS Xcode warning that needs fixing? You may need to specifically choose a developer instead of using Automatic selection");
-    NSLog(@"--> Are you using a Pre-iOS7 Simulator?");
+    if (debug==1) NSLog(@"** iCloud is NOT SIGNED IN **");
+    if (debug==1) NSLog(@"--> Is iCloud Documents and Data enabled for a valid iCloud account on your Mac & iOS Device or iOS Simulator?");
+    if (debug==1) NSLog(@"--> Have you enabled the iCloud Capability in the Application Target?");
+    if (debug==1) NSLog(@"--> Is there a CODE_SIGN_ENTITLEMENTS Xcode warning that needs fixing? You may need to specifically choose a developer instead of using Automatic selection");
+    if (debug==1) NSLog(@"--> Are you using a Pre-iOS7 Simulator?");
     return NO;
 }
 - (BOOL)loadiCloudStore {
@@ -396,12 +400,12 @@ NSString *ubiquityStoreName = @"ParentCab";
                                                     options:options
                                                       error:&error];
     if (_iCloudStore) {
-        NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
+        if (debug==1) NSLog(@"** The iCloud Store has been successfully configured at '%@' **", _iCloudStore.URL.path);
         [self mergeNoniCloudDataWithiCloud];
         //[self destroyAlliCloudDataForThisApplication];
         return YES;
     }
-    NSLog(@"** FAILED to configure the iCloud Store : %@ **", error);
+    if (debug==1) NSLog(@"** FAILED to configure the iCloud Store : %@ **", error);
     return NO;
 }
 - (void)listenForStoreChanges {
@@ -575,7 +579,7 @@ NSString *ubiquityStoreName = @"ParentCab";
 - (void)destroyAlliCloudDataForThisApplication {
     
     if (![[NSFileManager defaultManager] fileExistsAtPath:[[_iCloudStore URL] path]]) {
-        NSLog(@"Skipped destroying iCloud content, _iCloudStore.URL is %@", [[_iCloudStore URL] path]);
+        if (debug==1) NSLog(@"Skipped destroying iCloud content, _iCloudStore.URL is %@", [[_iCloudStore URL] path]);
         return;
     }
 	
