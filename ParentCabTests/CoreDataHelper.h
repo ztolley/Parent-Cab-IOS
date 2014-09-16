@@ -10,4 +10,5 @@
 
 - (void)setupCoreData;
 - (void)saveContext;
+- (void)backgroundSaveContext;
 @end

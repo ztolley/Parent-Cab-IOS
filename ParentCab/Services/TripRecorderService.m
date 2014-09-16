@@ -200,6 +200,8 @@
 			journey.endLocation.thoroughfare = placement.thoroughfare;
 		}
 		
+		[self.cdh backgroundSaveContext];
+		
 		if (journeyBlock) {
 			journeyBlock(journey);
 		}

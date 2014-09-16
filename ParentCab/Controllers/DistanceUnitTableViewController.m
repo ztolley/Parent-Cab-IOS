@@ -8,6 +8,7 @@
 
 #import "DistanceUnitTableViewController.h"
 #import "Settings.h"
+#import "SettingsViewController.h"
 
 
 int const MILESROW = 0;
@@ -48,6 +49,8 @@ int const KMROW = 1;
 		[settings setDistanceUnit:SETTINGSKM];
 		[self markSelected:SETTINGSKM];
 	}
+	
+	[self.settingsViewController.tableView reloadData];
 }
 
 - (void)markSelected:(NSString *)unit {

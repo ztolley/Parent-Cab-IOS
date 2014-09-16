@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+@class SettingsViewController;
 
 @interface DistanceUnitTableViewController : UITableViewController
-
+@property (strong, nonatomic)SettingsViewController *settingsViewController;
 @end

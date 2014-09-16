@@ -2,7 +2,7 @@
 //  Journey.h
 //  ParentCab
 //
-//  Created by Zac Tolley on 01/09/2014.
+//  Created by Zac Tolley on 05/09/2014.
 //  Copyright (c) 2014 Zac Tolley. All rights reserved.
 //
 
@@ -19,19 +19,14 @@
 @property (nonatomic) NSTimeInterval startTime;
 @property (nonatomic, retain) EndLocation *endLocation;
 @property (nonatomic, retain) StartLocation *startLocation;
-@property (nonatomic, retain) NSOrderedSet *steps;
+@property (nonatomic, retain) NSSet *steps;
 @end
 
 @interface Journey (CoreDataGeneratedAccessors)
 
-- (void)insertObject:(Step *)value inStepsAtIndex:(NSUInteger)idx;
-- (void)removeObjectFromStepsAtIndex:(NSUInteger)idx;
-- (void)insertSteps:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
-- (void)removeStepsAtIndexes:(NSIndexSet *)indexes;
-- (void)replaceObjectInStepsAtIndex:(NSUInteger)idx withObject:(Step *)value;
-- (void)replaceStepsAtIndexes:(NSIndexSet *)indexes withSteps:(NSArray *)values;
 - (void)addStepsObject:(Step *)value;
 - (void)removeStepsObject:(Step *)value;
-- (void)addSteps:(NSOrderedSet *)values;
-- (void)removeSteps:(NSOrderedSet *)values;
+- (void)addSteps:(NSSet *)values;
+- (void)removeSteps:(NSSet *)values;
+
 @end

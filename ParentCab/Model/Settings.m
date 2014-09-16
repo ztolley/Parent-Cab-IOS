@@ -1,4 +1,5 @@
 #import "Settings.h"
+#import "SDCloudUserDefaults.h"
 
 NSString *const RATEKEY = @"PencePerMeter";
 NSString *const DISTANCEUNITKEY = @"DistanceUnit";
@@ -6,9 +7,7 @@ NSString *const SETTINGSMILES = @"miles";
 NSString *const SETTINGSKM = @"km";
 
 @interface Settings ()
-{
-	NSUserDefaults *defaults;
-}
+
 @end
 
 
@@ -29,34 +28,33 @@ NSString *const SETTINGSKM = @"km";
 {
     self = [super init];
     if (self) {
-        defaults = [NSUserDefaults standardUserDefaults];
 		_locale = [NSLocale currentLocale];
     }
     return self;
 }
 
 - (void)setRate:(float)newRate {
-	[defaults setFloat:newRate forKey:RATEKEY];
+	[SDCloudUserDefaults setFloat:newRate forKey:RATEKEY];
 }
 - (float)getRate {
 
-	float defaultRate = [defaults floatForKey:RATEKEY];
+	float defaultRate = [SDCloudUserDefaults floatForKey:RATEKEY];
 	
 	if (defaultRate == 0) {
 		NSBundle *mainBundle = [NSBundle mainBundle];
 		NSNumber *appDefaultRate = [mainBundle objectForInfoDictionaryKey:RATEKEY];
 		defaultRate = appDefaultRate.floatValue;
-		[defaults setFloat:defaultRate forKey:RATEKEY];
+		[SDCloudUserDefaults setFloat:defaultRate forKey:RATEKEY];
 	}
 	
 	return defaultRate;
 }
 
 - (void)setDistanceUnit:(NSString *)newDistance {
-	[defaults setObject:newDistance forKey:DISTANCEUNITKEY];
+	[SDCloudUserDefaults setObject:newDistance forKey:DISTANCEUNITKEY];
 }
 - (NSString *)getDistanceUnit {
-	NSString *distanceUnit = [defaults stringForKey:DISTANCEUNITKEY];
+	NSString *distanceUnit = [SDCloudUserDefaults stringForKey:DISTANCEUNITKEY];
 
 	if (distanceUnit == nil) {
 		distanceUnit = [self distanceUnitForLocale];
@@ -66,8 +64,8 @@ NSString *const SETTINGSKM = @"km";
 }
 
 - (void)reset {
-	[defaults removeObjectForKey:RATEKEY];
-	[defaults removeObjectForKey:DISTANCEUNITKEY];
+	[SDCloudUserDefaults removeObjectForKey:RATEKEY];
+	[SDCloudUserDefaults removeObjectForKey:DISTANCEUNITKEY];
 	_locale = [NSLocale currentLocale];
 }
 

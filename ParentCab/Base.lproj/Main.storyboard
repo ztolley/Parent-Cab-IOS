@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13E28" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mfK-aD-n1A">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A343f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="mfK-aD-n1A">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -113,7 +112,7 @@
                                     <constraint firstItem="ftN-Ns-zgl" firstAttribute="leading" secondItem="7ut-Gn-82r" secondAttribute="leading" constant="38" id="796-ZT-XPc"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" constant="1" id="8f5-tx-yzr"/>
                                     <constraint firstAttribute="trailing" secondItem="ftN-Ns-zgl" secondAttribute="trailing" constant="37" id="ANt-D4-7uj"/>
-                                    <constraint firstAttribute="height" secondItem="MGo-9s-pTq" secondAttribute="height" id="B5u-IF-L8a"/>
+                                    <constraint firstAttribute="height" secondItem="MGo-9s-pTq" secondAttribute="height" constant="-1" id="B5u-IF-L8a"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" constant="1" id="CPG-pj-kum"/>
                                     <constraint firstItem="MGo-9s-pTq" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" id="D9E-yW-ji2"/>
                                     <constraint firstAttribute="centerX" secondItem="MGo-9s-pTq" secondAttribute="centerX" id="EJN-oA-kxc"/>
@@ -122,10 +121,10 @@
                                     <constraint firstItem="il0-Mm-KXY" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="LX7-4l-XYA"/>
                                     <constraint firstAttribute="centerX" secondItem="0Fl-b9-YVo" secondAttribute="centerX" id="LfG-0t-5GP"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="width" secondItem="7ut-Gn-82r" secondAttribute="width" multiplier="0.32" id="VRy-OI-vIm"/>
-                                    <constraint firstAttribute="height" secondItem="il0-Mm-KXY" secondAttribute="height" id="Wf5-zJ-CKW"/>
+                                    <constraint firstAttribute="height" secondItem="il0-Mm-KXY" secondAttribute="height" constant="-1" id="Wf5-zJ-CKW"/>
                                     <constraint firstItem="5J9-GV-7Ft" firstAttribute="top" secondItem="7ut-Gn-82r" secondAttribute="top" id="YWP-i6-HVX"/>
                                     <constraint firstItem="0Fl-b9-YVo" firstAttribute="top" secondItem="MGo-9s-pTq" secondAttribute="top" id="aJ0-I6-F5e"/>
-                                    <constraint firstItem="MGo-9s-pTq" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" id="bjg-gx-Ped"/>
+                                    <constraint firstItem="MGo-9s-pTq" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" constant="1" id="bjg-gx-Ped"/>
                                     <constraint firstAttribute="trailing" secondItem="5J9-GV-7Ft" secondAttribute="trailing" id="lFb-si-ceO"/>
                                     <constraint firstItem="0Fl-b9-YVo" firstAttribute="height" secondItem="7ut-Gn-82r" secondAttribute="height" id="nKV-IA-7eR"/>
                                     <constraint firstItem="il0-Mm-KXY" firstAttribute="top" secondItem="7ut-Gn-82r" secondAttribute="top" id="nOW-jX-qTX"/>
@@ -211,7 +210,7 @@
             </objects>
             <point key="canvasLocation" x="-176" y="16"/>
         </scene>
-        <!--Settings View Controller - Settings-->
+        <!--Settings-->
         <scene sceneID="IER-Qf-n9K">
             <objects>
                 <tableViewController id="X8D-er-B7f" customClass="SettingsViewController" sceneMemberID="viewController">
@@ -273,7 +272,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="Q8O-9m-Vmh" kind="push" id="8pS-Uu-tMv"/>
+                                            <segue destination="Q8O-9m-Vmh" kind="push" identifier="distanceunit" id="8pS-Uu-tMv"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -292,9 +291,9 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tEY-40-SH0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="708" y="-834"/>
+            <point key="canvasLocation" x="282" y="-460"/>
         </scene>
-        <!--Distance Unit Table View Controller - Distance Unit-->
+        <!--Distance Unit-->
         <scene sceneID="LAx-sd-xdR">
             <objects>
                 <tableViewController id="Q8O-9m-Vmh" customClass="DistanceUnitTableViewController" sceneMemberID="viewController">
@@ -368,9 +367,9 @@
                     </tableViewCellContentView>
                 </tableViewCell>
             </objects>
-            <point key="canvasLocation" x="1452" y="-834"/>
+            <point key="canvasLocation" x="650" y="-460"/>
         </scene>
-        <!--Trip Record View Controller - Journey-->
+        <!--Journey-->
         <scene sceneID="YJb-D2-YaO">
             <objects>
                 <tableViewController id="7sF-tP-UPd" customClass="TripRecordViewController" sceneMemberID="viewController">
@@ -382,7 +381,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="8" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="f21-GN-hJn">
+                                <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="8" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f21-GN-hJn">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
                                 </mapView>
                             </subviews>
@@ -675,7 +674,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8qo-lR-wCb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="16"/>
+            <point key="canvasLocation" x="1034" y="4"/>
         </scene>
         <!--Journey List-->
         <scene sceneID="XvZ-VY-fse">
@@ -699,7 +698,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
+                                        <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h87-kx-dWS">
                                             <rect key="frame" x="0.0" y="0.0" width="99" height="83"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="99" id="QUd-KV-HGM"/>
@@ -747,7 +746,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fmr-vz-ROA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="596" y="1002"/>
+            <point key="canvasLocation" x="420" y="514"/>
         </scene>
     </scenes>
     <resources>
@@ -760,6 +759,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="job-Rp-647"/>
+        <segue reference="vmG-tZ-YXb"/>
     </inferredMetricsTieBreakers>
 </document>
